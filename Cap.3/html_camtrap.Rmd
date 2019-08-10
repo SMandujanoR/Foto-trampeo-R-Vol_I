@@ -1,0 +1,452 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+
+# Organización de fotos: `camtrapR`
+
+### *Eva López-Tello* {-}
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(imager)
+```
+
+## Introducción
+
+El foto-trampeo permite obtener miles o decenas de miles de fotos de las especies que habitan en alguna región de estudio. Sin embargo, para un análisis eficiente de los datos es necesario un manejo organizado y sistemático del gran número de fotos obtenidas. Una de las opciones más empleadas para organizar la información en Excel. Alternativamente, se han desarrollado programas como por ejemplo:
+
+- `camera base` [@Tobler2007] 
+- `Wild.ID` [@fegraus2011data] 
+- `eMammal` (<http://emmamal.si.edu>)
+- `Aardwolf` [@Krishnappa2014] 
+- `cpw photo warehouse` [@Ivan2016] 
+- `TRAPPER` [@Bubnicki2016] 
+
+En general todos estos programas permiten extraer los metadatos de las imágenes y exportarlos a otros programas para analizar la información. En el año 2016 se liberó el paquete camtrapR el cuál te permite organizar, renombrar y extraer metadatos de cientos de fotos. También se pueden realizar algunos gráficos exploratorios de riqueza, abundancia y patrones de actividad, así como preparar bases para análisis de ocupación.
+
+En este capítulo se presenta el paquete `camtrapR` [@niedballa2016camtrapr] que sirve para organizar las fotografías obtenidas con cámaras-trampa, empleando un paquete R muy interesante y relativamente sencillo. Para este ejemplo utilizaremos una muestra de fotos de 5 cámaras-trampa ubicadas en la localidad de San Gabriel Casa Blanca, Oaxaca, dentro de la Reserva de la Biosfera Tehuacán-Cuicatlán. La cámaras estuvieron activas de mayo a julio de 2013 y se programaron para que tomaran 3 fotos consecutivas en intervalos de 10 a 15 s. 
+
+## Instalación y datos iniciales
+
+El paquete `camtrapR` [@niedballa2016camtrapr] está disponible en la librería CRAN en: <https://cran.r-project.org/web/packages/camtrapR/>
+
+Mientras que el manual de referencia se puede bajar desde: <https://cran.r-project.org/web/packages/camtrapR/camtrapR.pdf>
+
+El grupo de discusión del paquete en: <https://groups.google.com/forum/#!forum/camtrapr>
+
+El primer paso es instalar el paquete desde: <https://cran.r-project.org/web/packages/camtrapR/>.  
+
+Después se debe descargar de la red el archivo ejecutable `exiftool` desde: <http://www.sno.phy.queensu.ca/~phil/exiftool/index.html>. 
+
+`exiftool` se debe descomprimir y colocar en disco local (C:) dentro de la carpeta Windows; mientras que en el sistema OSX se sugiere emplear la ruta: `export PATH=$PATH:/usr/local/bin`. Se modifica el nombre para que solo quede como `exiftool`. Este ejecutable permite extraer y editar los metadatos de las fotos. Otra opción para extraer y editar los metadatos de las fotos es descargar de la red el programa `digiKam` (ver Capítulo 3).   
+Para instalar el paquete `camtrapR` se introduce:
+
+```
+install.packages("camtrapR")
+```
+Después se carga como:
+
+```{r message=TRUE, warning=TRUE, paged.print=TRUE}
+library(camtrapR)
+```
+
+Para verificar que `exiftool` esta en el directorio correcto se utiliza:
+
+```{r message=FALSE, warning=FALSE}
+Sys.which("exiftool")
+```
+
+Una vez instaladas todas las herramientas necesarias, se debe crear en Excel una tabla con las coordenadas UTM, fecha de colocación, fecha de retiro y fechas en que estuvo inactiva cada cámara y se guarda en archivo *.csv. En caso de tener dos o más cámaras por estación, se debe agregar después de la columna `Station`, una columna con el ID de la cámara (Figura \@ref(fig:d1)). 
+
+```{r d1, echo=FALSE, fig.align='center', fig.cap="Datos de las cámaras.", out.width="95%"}
+F1 <- load.image("Figura_1.JPG")
+plot(F1, axes = F)
+```
+
+En este paso es importante definir el formato de fecha que se utilizará ya que para ejecutar algunas funciones se pedirá especificarlo. Los títulos de la tabla se pueden editar posteriormente, sin embargo estos deben coincidir con los títulos de las tablas que irá generando el paquete por lo que se recomienda que se mantenga el formato en inglés.
+
+## Organización y manejo de las fotos
+
+Para leer el archivo con la información de ubicación y actividad de las cámaras:
+
+```{r}
+sitio_1 <- read.csv ("actividad de estaciones_1_cam.csv", 
+header = TRUE)
+```
+
+Se crea una carpeta principal en la cual estarán todas las fotos clasificadas por número o nombre de cámara, para esto primero se especifica el directorio y el nombre de la carpeta, por ejemplo:
+
+```{r}
+fotos_sitio_1 <- file.path("Sitio_1")
+```
+
+Cada usuario deberá crear la ruta de lectura de datos y directorio de trabajo que más le convenga, una forma fácil de trabajo es creando un proyecto en `R`. Después se crea la carpeta principal con las subcarpetas de cada cámara con la función:
+
+```{r, message=FALSE, warning=FALSE}
+fotos_sitio_1_carpeta <-
+createStationFolders(inDir = fotos_sitio_1, 
+stations = as.character(sitio_1$Station),
+createinDir = TRUE)
+```
+
+Una vez creada la carpeta principal, se arrastran las fotos de cada memoria SD a las subcarpetas con el número de cámara correspondiente. Es muy importante que las imágenes solo se arrastren; es decir, no se deben copiar y pegar, ni cortar y pegar ya que se puede perder información de los metadatos (Figura \@ref(fig:d2)).
+
+```{r d2, echo=FALSE, message=FALSE, warning=FALSE, fig.cap=" Ejemplo de carpetas con datos.", out.width="95%", fig.align='center'}
+F2 <- load.image("Figura_2.JPG")
+plot(F2, axes = F)
+```
+
+Después de colocar las imágenes en su carpeta correspondiente, el siguiente paso es verificar que la fecha y hora sean correctas en todas las fotos. En caso de que algunas imágenes presenten errores se pueden corregir  utilizando la función `timeshift`. Para hacer la corrección de fecha y hora es necesario que todas las imágenes que presenten error se ubiquen en una carpeta independiente a la principal o la corrección se haga antes de arrastrar las fotos de la memoria SD a la carpeta principal. Para este ejemplo utilizaremos una carpeta independiente llamada "Corrección Casa Blanca", como:
+
+```
+fotos_correccion_sitio_1 <- 
+      file.path("Corrección_sitio_1")
+```
+
+Una vez seleccionadas las fotos se creará una tabla que contenga la información que se quiera corregir (Figura \@ref(fig:d3)).
+
+```{r d3, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.width="60%", fig.cap="Ajuste de horas."}
+F3 <- load.image("Figura_3.JPG")
+plot(F3, axes = F)
+```
+
+La tabla debe contener el número de estación, `timeshift` y un signo “+” (para aumentar años y/o horas) o “-” (para disminuir años y/o horas).  El formato que se utiliza en timeshift es el siguiente: Fecha, `Año:Mes:Dia`, por ejemplo para disminuir o aumentar un año se pone `1:0:0`. Para el caso de la hora se utiliza: `Hora:minutos:segundos`, por ejemplo para disminuir o aumentar una hora se pone: `1:0:0`.  Estos dos valores deben estar en la misma celda como se muestra en la figura anterior.  Luego se lee en R la tabla con la información como:
+
+```{r, message=FALSE, warning=FALSE}
+tabla_correccion_sitio_1 <- 
+  read.csv("correccion de hora.csv", header = TRUE)
+```
+
+Para obtener las imágenes con la información corregida, se utiliza la siguiente función:
+
+```
+fotos_sitio_1_corregidas <- timeShiftImages(inDir = 
+fotos_correccion_sitio_1,
+timeShiftTable = tabla_correccion_sitio_1,
+stationCol = "Station", hasCameraFolders = FALSE,
+timeShiftColumn = "timeshift",
+timeShiftSignColumn = "sign", undo = F)
+```
+
+Después de correr la función automáticamente en la carpeta se creará una copia de la foto con la hora y fecha corregida en los metadatos. Una vez corregidas las imágenes, el siguiente paso es renombrarlas.  Un aspecto importante es que las fotos deben ser renombradas primero y después clasificadas por especie, si se hace a la inversa se pierde la clasificación cuando las fotos son copiadas a la nueva carpeta.  Las carpetas de cámaras que no contengan fotos no serán copiadas a la carpeta de fotos renombradas.
+
+Para crear la carpeta con las fotos renombradas se utilizan las siguientes funciones: 
+
+```{r, message=FALSE, warning=FALSE}
+fotos_sitio_1_renombradas <- file.path("Sitio_1_R")
+```
+
+```
+imageRename(inDir = fotos_sitio_1,
+outDir = fotos_sitio_1_renombradas,
+hasCameraFolders = FALSE,
+keepCameraSubfolders = FALSE,
+copyImages = TRUE)
+```
+
+Otro aspecto importante es que se recomienda guardar aparte las fotos originales que fueron extraídas de las tarjetas SD. La carpeta con las fotos renombradas no puede ser guardada dentro de la carpeta principal, debe colocarse en un directorio diferente.  Una vez que las fotos fueron renombradas, se puede agregar a los metadatos de cada foto el nombre del proyecto y la institución a la que pertenecen. Para esto se utiliza la  función:
+
+```{r, message=FALSE, warning=FALSE}
+proyecto_institucion <- "Proyecto_RBTC (INECOL)"
+addCopyrightTag(inDir = fotos_sitio_1_renombradas, 
+copyrightTag = proyecto_institucion, 
+askFirst = FALSE, keepJPG_original = F)
+```
+
+Para verificar que aparece la información en los metadatos se utiliza la siguiente función y se pueden visualizar los metadatos: 
+
+```{r, message=FALSE, warning=FALSE}
+copyright <- exifTagNames(fotos_sitio_1_renombradas, 
+    returnMetadata = TRUE)
+```
+
+## Clasificación por especie
+
+La clasificación de especies se puede hacer de dos formas, la primera es crear subcarpetas con los nombres de cada especie o nombres comunes dentro de cada carpeta de estación; la segunda opción es poner una etiqueta a cada foto con un editor de imágenes como `DigiKam`. Para este ejemplo se utilizarán las subcarpetas con el nombre común de cada especie.  Para lo cual primero se crea un objeto con el nombre común de cada especie, como:
+
+```{r, message=FALSE, warning=FALSE}
+especies_sitio_1 <- c("Conejo", "Coyote", "Lince", 
+  "Pecarí", "Venado", "Zorra")
+```
+
+Después de listar todas las especies, se crean las subcarpetas con la siguiente función como:
+
+```{r, message=FALSE, warning=FALSE}
+createSpeciesFolders(inDir = fotos_sitio_1_renombradas,
+species = especies_sitio_1, hasCameraFolders = FALSE,
+removeFolders = FALSE)
+```
+
+Una vez creadas las subcarpetas las fotos son arrastradas de acuerdo a la especie correspondiente.  Las ventajas de utilizar `DigiKam` es que si en una foto se tienen más de una especie es posible etiquetar a cada una, en cambio si se utilizan subcarpetas se debe hacer una copia de las fotos en donde se observen más de una especie. Otra ventaja de las etiquetas es que el nombre de la especie queda grabado dentro de los metadatos y también se pueden hacer comparaciones cuando más de un observador realiza la identificación de la especie o individuos. También se pueden crear carpetas que contengan las fotos de todas las cámaras de una sola especie, para esto se usa la función:
+
+```{R}
+fotos_venado_sitio_1 <- file.path("Venado")
+venado <- "Venado"
+```
+
+```
+getSpeciesImages(species = "venado",
+IDfrom = "directory", 
+inDir = fotos_sitio_1_renombradas,
+outDir = fotos_venado_sitio_1,
+createStationSubfolders = TRUE)
+```
+
+Si se utiliza FALSE todas las fotos estarán en una sola carpeta.  La nueva carpeta "Venado" no puede ser guardada dentro de la carpeta de fotos renombradas, por lo tanto, `inDir` y `outDir` deben tener rutas diferentes.
+
+## Extracción de metadatos 
+
+Cuando se trabaja con especies que pueden ser identificadas individualmente es necesario clasificar las fotos a través de subcarpetas dentro de las carpetas de cada especie o etiquetas.  Para este ejemplo se utilizará la carpeta de venado. Dentro de cada carpeta de estación se deben crear manualmente o en camtrapR subcarpetas con el número de individuos que se han identificado. Posteriormente se deben arrastrar las fotos de cada individuo a la carpeta correspondiente (Figura \@ref(fig:d4)).
+
+```{r d4, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', out.width="75%", fig.cap="Ejemplo de carpetas con fotos."}
+F4 <- load.image("Figura_4.JPG")
+plot(F4, axes = F)
+```
+
+Una vez organizadas las fotos se pueden crear tablas con la información de cada foto por especie e individuos.  Para crear las tablas por especie se utiliza la siguiente función:
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+fotos_sitio_1_renombradas <- file.path("Sitio_1_R")
+```
+
+```{r}
+tabla_sitio_1 <- recordTable(inDir = 
+fotos_sitio_1_renombradas, IDfrom = "directory", 
+timeZone = "America/Mexico_City", writecsv = FALSE)
+```
+
+Para obtener la tabla solo con los registros independientes se deben agregar otros datos a la función:
+
+```{r, message=FALSE, warning=FALSE}
+tabla_sitio_1_independientes <-  
+  recordTable(inDir = fotos_sitio_1_renombradas,
+IDfrom = "directory", minDeltaTime = 60, 
+deltaTimeComparedTo = "lastRecord",
+timeZone = "America/Mexico_City")
+```
+
+Note que el argumento `minDeltaTime` es el lapso de tiempo que se considera entre una foto y otra para ser un registro independiente, para el ejemplo se utilizaron 60 min. En IDfrom se utiliza `directory` si las fotos estan en subcarpetas y `metadata` si tienen etiqueta. En `exclude` se listan las especies que se quieren omitir en la tabla o las especies no identificadas. Las tablas pueden ser guardadas en formato *.csv y leídas posteriormente en `camtrapR` con las siguientes funciones y se visualiza (Figura \@ref(fig:d5)):
+
+```
+write.csv(tabla_sitio_1, "tabla sitio 1.csv")
+write.csv(tabla_sitio_1_independientes, 
+    "tabla sitio 1 independientes.csv")
+read.csv("tabla sitio 1.csv", header = T)
+read.csv("tabla sitio 1 independientes.csv", header = T)
+```
+
+```{r d5, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.cap="Ejemplo de visualización de datos."}
+F5 <- load.image("Figura_5.JPG")
+plot(F5, axes = F)
+```
+
+Para crear las tablas con la información de cada individuo, se utiliza el objeto creado anteriormente con la dirección de la carpeta "Venado" como:
+
+```{r}
+fotos_venado_sitio_1 <- file.path("Venado")
+```
+
+Después se utiliza la siguiente función:
+
+```{r}
+tabla_venado_individuos <- recordTableIndividual(inDir =
+fotos_venado_sitio_1, IDfrom = "directory", 
+minDeltaTime = 60, 
+deltaTimeComparedTo = "lastIndependentRecord",
+metadataIDTag = "individuo", hasStationFolders = TRUE, 
+timeZone = "America/Mexico_City")
+```
+
+En `metadataIDTag` se debe poner el nombre que identifica a la carpeta de cada individuo (por ejemplo individuo, individual). La tabla creada se puede guardar con la siguiente función y se puede visualizar (Figura \@ref(fig:d6)):
+
+```
+write.csv(tabla_venado_individuos, "tabla venado.csv")
+```
+
+```{r d6, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.cap="Ejemplo de datos."}
+F6 <- load.image("Figura_6.JPG")
+plot (F6, axes = F)
+```
+
+## Exploración y visualización de datos
+
+En el paquete `camtrapR` se pueden crear algunos gráficos de riqueza, número de fotos por cámara, así como de actividad de especies. También se puede obtener un resumen del número de días que trabajó cada estación, el número de especies capturadas por cámara y el número total de registros por especie. Es importante tener en cuenta que camtrapR solo nos ayuda hacer una exploración general de los datos, para análisis más específicos se deben utilizar otros paquetes, no obstante las tablas obtenidas pueden ser de mucha utilidad. Para crear el mapa de riqueza de especies por estación (Figura \@ref(fig:d7)), se emplea el siguiente código:
+
+```{r d7, out.width="75%", fig.align='center', fig.cap="Mapa de riqueza de especies por cámara."}
+mapa_riqueza_estacion <- detectionMaps(CTtable = sitio_1,
+recordTable = tabla_sitio_1_independientes,
+Xcol = "X", Ycol = "Y", stationCol= "Station", 
+speciesCol   = "Species", printLabels  = TRUE, 
+richnessPlot = TRUE, speciesPlots = FALSE, addLegend = TRUE)
+```
+
+Observe que el objeto `sitio_1` contiene la tabla con las UTM y el lapso de operación de cada cámara. El objeto `tabla_sitio_1_independientes` es el que contiene los metadatos de los registros cada 60 minutos.
+	
+Para conocer el número de registros de una especie por estación, por ejemplo el lince (Figura \@ref(fig:d8)), se utiliza:
+
+```{r d8, out.width="75%", fig.align='center', fig.cap="Mapa de registros por cámara del lince."}
+mapa_lince <- detectionMaps(CTtable = sitio_1,
+recordTable = tabla_sitio_1_independientes,
+Xcol = "X", Ycol = "Y", stationCol = "Station",
+speciesCol = "Species", speciesToShow = "Lince",    
+printLabels = TRUE, richnessPlot = FALSE,     
+speciesPlots = TRUE, addLegend = TRUE)
+```
+
+Para estimar la actividad de las especies, por ejemplo la zorra (Figura \@ref(fig:d9)), se emplea la densidad kernel como:
+
+```{r d9, out.width="75%", fig.align='center', fig.cap="Patrón de actividad de la especie seleccionada."}
+zorra <- "Zorra"
+activityDensity(recordTable = 
+    tabla_sitio_1_independientes, 
+species = zorra, extend = NULL,
+xlab = "Hora", ylab = "Densidad", bty = "L")
+```
+
+Esos mismos datos se pueden visualizar como histograma (Figura \@ref(fig:d10)) del número de fotos por hora como:
+
+```{r d10, out.width="75%", fig.align='center', fig.cap="Histograma de frecuencia de fotos de la especie seleccionada."}
+activityHistogram(recordTable = 
+tabla_sitio_1_independientes, species = zorra)
+```
+
+Por otro lado, se pueden visualizar los datos en forma de gráfica circular de actividad con barras (Figura \@ref(fig:d11)):
+
+```{r d11, out.width="50%", fig.align='center', fig.cap="Gráfico de actividad de la especie seleccionada."}
+venado <- "Venado"
+activityRadial(recordTable = 
+tabla_sitio_1_independientes, species = venado, lwd = 3)
+```
+
+O bien como gráfica circular de actividad con polígono (Figura \@ref(fig:d12)):
+
+```{r d12, out.width="50%", fig.align='center', fig.cap="Gráfico circular."}
+activityRadial(recordTable = 
+tabla_sitio_1_independientes, 
+species = venado, speciesCol = "Species", 
+plotR = TRUE, lwd = 3, rp.type = "p")
+```
+
+Para comparar la actividad de dos especies, por ejemplo zorra y conejo (Figura \@ref(fig:d13)), se puede emplear la función como:
+
+```{r d13, out.width="95%", fig.align='center', fig.cap="Comparación de especies.", message=FALSE, warning=FALSE}
+zorra <- "Zorra"
+conejo <- "Conejo"
+activityOverlap(recordTable = 
+tabla_sitio_1_independientes, speciesA = zorra, 
+speciesB = conejo, writePNG = FALSE, 
+plotR = TRUE, addLegend = TRUE, legendPosition = 
+"topright", linecol = c("grey", "black"), 
+linewidth = c(3,3), add.rug = TRUE, 
+xlab = "Hora", ylab = "Densidad") 
+```
+
+Se sugiere generar un reporte de datos como:
+
+```{r, linewidth=45}
+reporte_sitio_1 <- surveyReport(recordTable = 
+tabla_sitio_1_independientes,
+CTtable = sitio_1, speciesCol = "Species",
+stationCol = "Station",
+setupCol = "Fecha_colocación",
+retrievalCol = "Fecha_retiro",
+CTDateFormat = "%d/%m/%Y", 
+recordDateTimeCol = "DateTimeOriginal",
+recordDateTimeFormat = "%Y-%m-%d %H:%M:%S",
+CTHasProblems = T)
+```
+
+**Nota**: Es importante verificar el formato de fecha y hora que tiene cada una de las tablas para especificarlo en los argumentos `CTDateFormat` y `recordDateTimeFormat`, si el formato es incorrecto no se ejecutará la función o se marcaran errores. 
+
+Para extraer datos específicos como la operación de la cámara, número de días activa e inactiva se utiliza:
+
+```{r, linewidth=55}
+reporte_sitio_1 [[1]]
+```
+
+Para extraer datos del número de especies por estación:
+
+```{r}
+reporte_sitio_1 [[2]]
+```
+
+Para extraer datos del número de registros independientes por especie y número de estaciones en las que se registraron:
+
+```{r}
+reporte_sitio_1 [[3]]
+```
+
+Para extraer datos del número de registros de cada especie por estación:
+
+```{r}
+reporte_sitio_1 [[4]]
+```
+
+## Exportación de datos para análisis de ocupación 
+
+En `camtrapR` se pueden crear historiales de capturas, es decir que el paquete crea una tabla de 0 (no detección) y 1 (detección) para cada especie, estas tablas pueden ser utilizadas en otros paquetes para modelar la ocupación de las especies de interés.  La detección se puede tabular por día o se pueden realizar agrupaciones del número de días que se requieran. A continuación se muestra un ejemplo con el venado cola blanca. Para crear las tablas de historias de captura por especie, primero se necesita crear un objeto que contenga la tabla con la información de cuantos días estuvo activa cada cámara:
+
+```{r}
+cam_activas_sitio_1 <- cameraOperation(CTtable = sitio_1,
+stationCol = "Station", setupCol = "Fecha_colocación",
+retrievalCol = "Fecha_retiro", hasProblems = T,
+dateFormat = "%d/%m/%Y")
+```
+
+También se puede obtener la gráfica (Figura \@ref(fig:d14)) del período de operación de las cámaras:
+
+```{r d14, fig.cap="Ejemplo de días de trabajo de cinco cámaras.", echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width="85%"}
+camopPlot <- function(camOp){which.tmp <- 
+grep(as.Date(colnames(camOp)), pattern = "01$")
+label.tmp <- format(as.Date(colnames(camOp))
+[which.tmp], "%Y-%m")
+at.tmp <- which.tmp / ncol(camOp)
+image(t(as.matrix(camOp)), xaxt = "n", 
+yaxt = "n", col = c("red", "grey70"))
+axis(1, at = at.tmp, labels = label.tmp)
+axis(2, at = seq(from = 0, to = 1, 
+length.out = nrow(camOp)), 
+labels = rownames(camOp), las = 1)
+abline(v = at.tmp, col = rgb(0,0,0, 0.2))
+box()
+}
+camopPlot(camOp = cam_activas_sitio_1)
+```
+
+En la gráfica de operación de la cámara el color gris representa el periodo que la cámara estuvo activa y el color rojo los días que estuvo inactiva por alguna falla.
+
+Para crear la tabla con las historias de captura de una especie se utiliza:
+
+```{r}
+hist_captura_venado <- detectionHistory(
+  recordTable = tabla_sitio_1_independientes, 
+camOp = cam_activas_sitio_1, stationCo = "Station", 
+speciesCol = "Species", 
+recordDateTimeCol = "DateTimeOriginal", 
+recordDateTimeFormat = "%Y-%m-%d", 
+species = "Venado", occasionLength = 1, 
+day1 = "station", includeEffort = FALSE, 
+timeZone = "America/Mexico_City")
+```
+
+En `recordDateTimeCol` se debe especificar el formato de la fecha que contiene la tabla de registros independientes.  En `occasionLength` se debe especificar el número de días de cada ocasión de detección, por ejemplo, "1" dará la detección del venado en cada día de actividad de la cámara y "10" agrupará las detecciones de venado cada diez días.
+
+Una vez creada la tabla se puede guardar en archivo *.csv para poder ser utilizada en otros paquetes y/o programas. Luego se puede guardar como archivo .csv (Figura \@ref(fig:d15)) como:
+
+```{r d15, echo=FALSE, message=FALSE, warning=FALSE, out.width="85%", fig.align='center', fig.cap="Ejemplo de historia de detección por cámara."}
+F15 <- load.image("Figura_15.JPG")
+plot(F15, axes = F)
+```
+
+```
+write.csv(hist_captura_venado, 
+          "historia captura venado.csv")
+```
+
+## Sumario
+
+El paquete `camtrapR` es eficiente para renombrar automáticamente las imágenes, extraer sus metadatos en archivos *.csv, generar gráficos exploratorios de la información y crear bases para análisis de ocupación. Otra ventaja es que en `camtrapR` no es necesario importar cada una de las imágenes, a diferencia de otros programas. Otra de las ventajas es que lee imágenes ilimitadamente ya que las fotos se guardan en directorios locales y al mismo tiempo se pueden trasladar fácilmente a otros equipos de cómputo. Además, permite editar los metadatos como la fecha; corregir por ejemplo la hora de captura de la foto en caso de que sea errónea, lo cual no se puede hacer en los otros programas. Si se utilizan etiquetas se pueden comparar especies o individuos identificados por dos o más observadores. Finalmente, como organizador y gestor de fotos, `camtrapR` permite trasladar datos y archivos a sistemas de información geográfica de un modo relativamente similar al programa  `Camera Trap Manager` [@Zaragozi2015]. Asimismo, permite crear archivos para el análisis en otros programas como `PRESENCE`, `MARK`, y paquetes R como `unmarked`, `secr`, entre otros.
+
+
