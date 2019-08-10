@@ -1,0 +1,179 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Etiquetado y organización de fotos: `DigiKam`
+
+### *Luz A. Pérez-Solano* {-}
+
+## Introducción
+
+Para el manejo de las imágenes obtenidas a través del foto-trampeo se han desarrollado diversos programas para extraer sus metadatos, es decir, la información asociada a cada una de las fotografías generadas por las cámaras-trampa, por ejemplo: `camera base`, `Wild.ID` (ver Capítulo 4), `deskTEAM`, `eMammal`, entre otros. Todos estos programas permiten tener un manejo organizado y sistemático de la información, lo cual es muy importante al tener una gran cantidad de imágenes, pues disminuye el tiempo y reduce el posible error humano. `DigiKam` es una aplicación avanzada de gestión de imágenes digitales de código abierto que se ejecuta en Linux, Windows y MacOS. El programa proporciona diversas herramientas para importar, administrar, editar y compartir imágenes y archivos. Cuenta con un completo conjunto de herramientas de edición, esto incluye herramientas básicas para ajustar colores, recortar y enfocar, así como herramientas avanzadas, como el ajuste de curvas. 
+
+La herramienta principal con que cuenta `DigiKam` y por lo que se vuelve un programa útil y de fácil uso para la organización y gestión de imágenes obtenidas con cámaras trampa, es el `etiquetado`. Esta herramienta permite asignar clasificaciones a las imágenes, para luego filtrarlas con base en las etiquetas y así encontrar rápidamente elementos que coincidan con criterios específicos. El programa graba en los `metadatos` de cada imágen la etiqueta asignada. Los metadatos son la fuente de información con la cual se comienza a crear una base de datos que contendrá todos los registros del foto-trampeo y su información asociada, como la hora y fecha en que se tomó la fotografía, especie registrada, fase lunar, temperatura, etc.
+
+El principal objetivo del presente capítulo es describir el uso del programa `DigiKam` libre para etiquetar, organizar y gestionar las fotografías obtenidas con cámaras trampa (Figura \@ref(fig:b1)). El programa se puede descargar libremente desde: <https://www.digikam.org/>.
+
+```{r b1, fig.align = "center", out.width = "50%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Portada del programa DigiKam."}
+library(imager)
+dk<- load.image('portada.png')
+plot(dk, axes= F)
+```
+
+## Instalación y configuración de `digiKam`
+
+Consideraciones importantes:
+
+1. Siempre se debe mantener un respaldo original de los archivos fotográficos (tal y como se descargan la primera vez de la tarjeta SD).
+
+2. Se recomienda no crear muchos subniveles de carpetas. Se sugiere tener una carpeta principal (por ejemplo, nombrada como la localidad de estudio) y dentro de ésta una carpeta correspondiente a cada cámara-trampa (el código de identificación de cada cámara-trampa debe usarse para nombrar a su carpeta correspondiente).
+
+__Paso 1__
+
+Descargar la opción que corresponda al sistema de la computadora. Mac/Linux/Windows: 64-bit o 32-bit. Se descargará un archivo `.exe`, y debe ejecutarse (Figura \@ref(fig:b2)).
+
+```{r b2,  fig.align = "center", out.width = "50%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Opciones de sistemas."}
+F1<- load.image('1.png')
+plot(F1, axes= F)
+```
+
+__Paso 2__
+
+Una vez instalado el programa hay que configurarlo. Abrir el programa y mantener las opciones tal y como vienen (dar clic en botón `Next`), excepto en la segunda ventana `Configurar dónde mantiene sus imágenes`. En esta ventana se debe seleccionar la carpeta en donde se encuentran las imágenes que serán usadas, por ejemplo “*Fototrampeo_taller*”. Se sugiere que en esta carpeta únicamente se encuentren las imágenes con las que se trabajará. Finalizar la configuración (pulsar botón `Next` hasta llegar a la última ventana).
+
+```{r b3,  fig.align = "center", out.width = "75%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel de configuración inicial del programa."}
+F2<- load.image('2.png')
+plot(F2, axes= F)
+```
+
+__Paso 3__
+
+Dentro del programa se deben hacer unas últimas configuraciones, para lo cual hay que ir a la pestaña `Preferencias` (ubicada en la parte superior) y en la opción `Configurar digiKam` (Figura \@ref(fig:b4)). En la barra lateral izquierda fijarse que esté seleccionada la opción `Metadatos`. Dentro de Metadatos, en la pestaña `Comportamiento`, en la opción `Escribir esta información a los metadatos`, deben de estar todas las opciones activadas. 
+
+```{r b4,  fig.align = "center", out.width = "75%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Otras opciones de configuación."}
+F3<- load.image('3.png')
+plot(F3, axes= F)
+```
+
+__Paso 4__
+
+Debajo de la opción `Escribir esta información a los metadatos` se encuentra la opción `Leyendo y escribiendo metadatos`, aquí únicamente debe de estar seleccionada la opción `Actualizar las marcas de tiempo cuando se modifiquen los archivos` (Figura \@ref(fig:b5)).
+
+```{r b5,  fig.align = "center", out.width = "75%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel."}
+F4<- load.image('4.png')
+plot(F4, axes= F)
+```
+
+__Paso 5__
+
+En la barra lateral izquierda, en la opción `Colecciones` es posible confirmar la ubicación de la carpeta que contendrá las imágenes y de requerirse, aquí es posible cambiarla (Figura \@ref(fig:b6)). En la opción `Colecciones locales` debe aparecer la carpeta anteriormente elegida (Paso 3). Si se quiere cambiar esta carpeta dar clic en el botón `Añadir colección` y seleccionar una nueva ubicación.
+
+```{r b6,  fig.align = "center", out.width = "75%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel."}
+F5<- load.image('5.png')
+plot(F5, axes= F)
+```
+
+## Etiquetado de las imágenes
+
+En la pantalla principal hay diversas pestañas ubicadas a la izquierda. Dar clic en la pestaña `Álbumes`, aquí se encuentran cada una de las carpetas correspondientes a cada cámara-trampa. Al seleccionar una carpeta se despliegan las imágenes (Figura \@ref(fig:b7)).
+
+```{r b7,  fig.align = "center", out.width = "95%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel."}
+F6<- load.image('6.png')
+plot(F6, axes= F)
+```
+
+__Paso 1__
+
+- En las pestañas ubicadas a la izquierda, dar clic en la pestaña `Etiquetas` y `Abrir el gestor de etiquetas`.
+- En la ventana que se despliega, dar clic en el símbolo **+** con el cual se abrirá una nueva ventana donde se crean las etiquetas (Figura \@ref(fig:b8)). 
+-Esta será la primera etiqueta que corresponderá al nivel principal `Species` (en inglés).
+
+```{r b8,  fig.align = "center", out.width = "95%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel."}
+F7<- load.image('7.png')
+plot(F7, axes= F)
+```
+
+\pagebreak
+
+__Paso 2__
+
+- Dentro de la etiqueta principal `Species` se creará una etiqueta para cada una de las especies que se registraron. El proceso es el mismo que en el paso 1, `es importante que la etiqueta Species esté seleccionada` antes de adar clic en **+**. Repetir este paso para cada especie. 
+
+Por ejemplo, para etiquetar fotos de coyote (Figura \@ref(fig:b9)).
+
+```{r b9,  fig.align = "center", out.width = "95%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel."}
+F8<- load.image('8.png')
+plot(F8, axes= F)
+```
+
+Para etiquetar fotos de venado cola blanca (Figura \@ref(fig:b10)).
+
+```{r b10,  fig.align = "center", out.width = "95%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel."}
+F9<- load.image('9.png')
+plot(F9, axes= F)
+```
+
+Cada una de las etiquetas creadas para las especies (Figura \@ref(fig:b11)).
+
+```{r b11,  fig.align = "center", out.width = "95%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel."}
+F10<- load.image('10.png')
+plot(F10, axes= F)
+```
+
+Al finalizar la creación de etiquetas, cerrar la ventana `Gestor de etiquetas`.
+
+__Paso 3__
+
+Nuevamente ir a la pestaña `Álbumes` y seleccionar la carpeta de trabajo. En el lado derecho del programa hay varias pestañas, selccionar la pestaña `Pies de foto`. En la ventana que se despliega seleccionar la pestaña `Etiquetas`, aquí se observan cada una de las etiquetas creadas para las especies (Figura \@ref(fig:b12)). Luego:
+
+- Seleccionar la primer imagen 
+- Seleccionar la etiqueta de la especie correspondiente
+- Clic en el botón `Aplicar`
+
+```{r b12,  fig.align = "center", out.width = "95%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel."}
+F11<- load.image('11.png')
+plot(F11, axes= F)
+```
+
+Repetir este paso para cada una de las imágenes.
+
+__Paso 4__
+
+Una vez etiquetadas todas las imágenes de una carpeta, seleccionarlas con las teclas `Ctrl + A` (Figura \@ref(fig:b13)). Luego:
+
+- Clic en el botón `Más` (ubicado en la parte inferior derecha)
+- Clic en la opción `Escribir metadatos en cada archivo`
+
+```{r b13,  fig.align = "center", out.width = "95%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel."}
+F12<- load.image('12.png')
+plot(F12, axes= F)
+```
+
+__Paso 5__
+
+Es posible crear tantas etiquetas principales como se necesiten y dentro de éstas, tantas etiquetas secundarias como se requieran, pero nunca se debe crear un nivel más abajo. Además de la etiqueta Species, se puede crear una etiqueta para reconocer individuos que aparecen en una imágen, número de individuos o el sexo (por mencionar algunas). El proceso es el mismo que en los pasos anteriores, únicamente se debe tener en cuenta que al momento de crear la nueva etiqueta principal esté seleccionada la etiqueta `Etiquetas` (Figura \@ref(fig:b14)). Para la creación de etiquetas secundarias para los individuos identificados (Figura \@ref(fig:b15)). Luego proceder con los pasos 3 y 4. Ejemplo de etiquetas creadas y los niveles entre cada una (Figura \@ref(fig:b16)).
+
+```{r b14,  fig.align = "center", out.width = "95%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel."}
+F13<- load.image('13.png')
+plot(F13, axes= F)
+```
+
+```{r b15,  fig.align = "center", out.width = "95%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel."}
+F14<- load.image('14.png')
+plot(F14, axes= F)
+```
+
+```{r b16,  fig.align = "center", out.width = "95%", echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Panel."}
+F15<- load.image('15.png')
+plot(F15, axes= F)
+```
+
+## Sumario
+
+En este capítulo se ha descrito la instalación y pasos básicos para emplear el programa `DigiKam` como herramienta para etiquetar las fotos incorporando en los metadatos el nombre científico de la especie. Este programa es de uso general para editar las fotografías de cualquier índole. Pero para el foto-trampeo, hemos encontrado que es de mucha utilidad junto con el paquete `camtrapR` el cual se describe con detalle en el siguiente capítulo 4. Alternativo al empleo de `DigiKam` está el programa `WildlID` desarrollado para procesar datos de foto-trampeo (ver Capítulo 5). 
+
+
+
+
