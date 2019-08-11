@@ -1,0 +1,222 @@
+---
+title: "Números de Diversidad de Hill"
+output: html_document
+---
+
+Considerando las dificultades que surgen al intentar comparar los distintos índices de diversidad porque difieren significativamente en sus unidades (e.g. índice de Simpson, índice de Shannon-Wiener), Hill (1973) sugiere realizar transformaciones matemáticas a los índices antes propuestos y presenta la denominada serie de "Números de diversidad de Hill" o "número efectivo de especies". 
+Los números de diversidad de Hill se han utilizado cada vez más para cuantificar la diversidad taxonómica/especies de un conjunto, debido a que representan una alternativa estadísticamente rigurosa en comparación a otros índices de diversidad. Para mayor detalle ver Hill (1973) y Chao et al., (2014). 
+Los números de diversidad de Hill están parametrizados por un orden de diversidad q, que determina la sensibilidad de las medidas a las abundancias relativas de las especies, los cuales incluyen tres medidas de diversidad de especies:
+Diversidad del orden 0, (q=0). Da el mismo peso a todas las especies (riqueza de especies).
+Diversidad del orden 1, (q=1). Da más peso a las especies comunes (diversidad de Shannon).
+Diversidad del orden 2, (q=2). Da más peso a las especies abundantes (diversidad de Simpson).
+
+Por otra parte, la completitud del inventario se evalúa mediante la "cobertura de la muestra"", que mide la proporción del número total de individuos en una comunidad que pertenece a las especies representadas en la muestra (Chao y Jost, 2012). 
+
+El análisis de los números de diversidad de Hill es facilitado con la paquetería de R llamado iNEXT (iNterpolación y EXTrapolación), un paquete que proporciona funciones simples para calcular y trazar curvas de muestreo basadas en el tamaño de la muestra, cobertura y datos de abundancia e incidencia. 
+El paquete iNEXT está disponible en CRAN (https://cran.r-project.org/web/packages/iNEXT/index.html). La lista de las funciones en iNEXT y su descripción se muestran a continuación; de la misma manera demostramos el uso de estas funciones en los ejemplos. 
+
+Tabla 1. Funciones iNEXT 
+
+```{r}
+tabla_1 <- read.csv(file = "tabla_1.csv", header = TRUE, sep = ",")
+knitr::kable(tabla_1)
+```
+
+## iNEXT
+
+### Instalamos el paquete iNEXT y ggplot2:
+
+```{r}
+library(iNEXT)
+library(ggplot2)
+```
+
+### Descripción de la función iNEXT () con argumentos por defecto:
+
+```{r eval=FALSE, include=TRUE}
+iNEXT(x, q, datatype, size, endpoint, knots, se, conf=0.95, nboot=50)
+```
+
+Los argumentos de esta función se describen brevemente a continuación y se explicarán posteriormente con más detalle mediante ejemplos ilustrativos: 
+
+```{r}
+tabla_2 <- read.csv(file = "tabla_2.csv", header = TRUE, sep = ",")
+knitr::kable(tabla_2)
+```
+
+## FORMATO DE DATOS
+
+Se admiten dos tipos de datos: 
+
+Los datos para cada conjunto / sitio incluyen abundancias de especies de muestra en una muestra empírica de individuos (una muestra de referencia).
+
+1. Datos de abundancia basados en individuos (datatype="abundance"):  Los datos de entrada para cada ensamblaje/sitio incluyen muestras de abundancias de especies en una muestra empírica de individuos ("muestra de referencia").
+
+Datos de incidencia basados en unidades de muestreo: para cada conjunto / sitio, los datos para una muestra de referencia consisten en presencia / ausencia de especie (o detección / no detección) en cada una de las unidades de muestreo múltiples.
+
+2. Datos de incidencia basados en unidades de muestreo:
+
+a) Datos de incidencia-frecuencia (datatype = "incidence_freq"): los datos de entrada para cada conjunto/sitio consisten en frecuencias de incidencia de muestras de especies (sumas de filas de cada matriz de incidencia). La primera entrada de cada lista debe ser el número total de unidades de muestreo, seguido de las frecuencias de incidencia de las especies.
+
+b) Datos crudos de incidencia (datatype = "incidence_raw"): para cada conjunto/sitio, los datos consisten en presencia/ausencia de especie (detección/ no detección) en cada una de las unidades de muestreo. 
+
+## EJEMPLOS RAREFACCIÓN/EXTRAPOLACIÓN (R/E)
+
+## Datos de abundancia basados en individuos (datatype="abundance")
+
+### Cargamos la base de datos:
+
+```{r}
+curva_abundancia <- read.table(file = "datos_abundancia.csv", header = TRUE, sep = ",")
+```
+
+```{r}
+base_1 <- read.csv(file = "base_1.csv", header = TRUE)
+knitr::kable(base_1)
+```
+
+### Eliminamos la columna "Especie" para trabajar con las variables Sitio 1 y Sitio 2:
+
+```{r}
+curva_abundancia <- (curva_abundancia[,2:3])
+```
+
+### Damos valor a la extrapolación (e.g. Doble del número de inviduos registrados):
+
+```{r}
+t <- seq (1,600)
+```
+
+### Corremos el análisis y creamos un objeto:
+
+```{r}
+iNEXT(curva_abundancia, q = 0, datatype = "abundance", size = t)
+curva_abundance <- iNEXT(curva_abundancia, q = 0, datatype = "abundance", size = t)
+```
+
+### A continuación se describen los resultados:
+
+$DataInfo: Muestra información básica de los datos. Nombre de los sitios (site), tamaño de muestra de referencia (n), riqueza de especies observada (S.obs), estimado de la cobertura de la muestra (SC) y los primeros diez recuentos de frecuencia (f1-f10), donde f1 denota el número de especies representadas por un individuo ("singletons"), f2 denota el número de especies representadas por dos individuos ( "doubletons"), y fk denota el número de especies representadas por exactamente k individuos.
+
+$iNextEst: Diversidad estimada con muestras rarificadas y extrapoladas para ambos sitios.
+Method: (interpolado, observado o extrapolado , dependiendo de si el tamaño m es menor, igual o mayor que el tamaño de muestra de referencia).
+Order: Estimación de diversidad de orden q (qD). 95% (default) de límite de confianza superior e inferior de diversidad (qD.LCL, qD.UCL), y la estimación de cobertura de la muestra (SC) junto con los límites de confianza superior e inferior del 95% (default) de la cobertura de muestra (SC.LCL, SC.UCL). Estas estimaciones de cobertura de muestra con intervalos de confianza se utilizan para trazar las curvas de R/E y la cobertura de la muestra. 
+
+$AsyEst: Estimaciones de diversidad asintótica junto con estadísticas relacionadas.
+Enumera la diversidad observada, estimaciones asintóticas, bootstrap estimado, s.e. y los intervalos de confianza para números de Hill del orden q= 0, 1 y 2. Las asíntotas estimadas se calculan a través de la función ChaoRichness () para q = 0, ChaoShannon () para q = 1 y ChaoSimpson () para q = 2; para mayor detalle ver Chao et al. (2014) para las fórmulas de estos estimadores asintóticos. 
+
+### Graficamos:
+
+La función ggiNEXT() funciona como una extensión del paquete ggplot2 para crear curvas de R/E usando una sola línea de código. Tres tipos de curvas son compatibles:
+
+1) Basada en el tamaño de muestra (type = 1). Representa las estimaciones de diversidad con intervalos de confianza (si se=TRUE) como una función del tamaño de muestra hasta el doble del tamaño de muestra por "default", o un "endpoint" especificado por el usuario.
+
+2) Curva de cobertura de la muestra o completitud del muestreo (type = 2). Con intervalos de confianza (si se=TRUE). Esta curva traza la cobertura de muestra con respecto al tamaño de la muestra para el mismo rango descrito en el type 1.
+
+3) Curva de R/E basada en la cobertura la muestra (type = 3)
+
+Traza las estimaciones de diversidad con intervalos de confianza (si es=VERDADERO) como una función de la cobertura de la muestra hasta la cobertura máxima obtenida del tamaño máximo descrito en el type 1.
+
+### Graficamos por medio del tamaño de la muestra (número de individuos): 
+
+```
+ggiNEXT(curva_abundance, type = 1, se = TRUE, color.var = "site",grey = FALSE) + 
+  theme_classic(base_size = 12) + theme(legend.position = "bottom", 
+  text = element_text(size = 12), legend.title = element_blank()) + 
+  labs (x="Número de individuos", y="Diversidad de especies")
+
+```
+![](curva_1.jpeg)
+
+
+### Graficamos la curva de la cobertura de la muestra: 
+
+```
+ggiNEXT(curva_abundance, type = 2, se = TRUE, color.var = "site", grey = FALSE) + 
+  theme_classic(base_size = 12) + theme(legend.position = "bottom", 
+  text = element_text(size = 12), legend.title = element_blank()) + 
+  labs (x="Número de individuos", y="Cobertura de la muestra")
+
+```
+![](curva_2.jpeg)
+
+### Graficamos la curva de R/E basada en la cobertura de la muestra:
+
+```
+ggiNEXT(curva_abundance, type = 3, se = TRUE, color.var = "site", grey = FALSE) + theme_classic(base_size = 12) + theme(legend.position = "bottom",
+text = element_text(size = 12), legend.title = element_blank()) + 
+labs (x="Cobertura de la muestra", y="Diversidad de especies")
+```
+![](curva_3.jpeg)
+
+Los gráficos señalan con símbolos las muestras de referencia (círculo: sitio 1; triángulo: sitio 2). La zona sombreada señala los intervalos de confianza al 95%. La extrapolación se extiende hasta el doble del número de individuos registrados. 
+
+## Datos de incidencia-frecuencia (datatype="incidence_freq")
+
+### Cargamos la base de datos:
+
+```{r}
+curva_incidencia <- read.table(file = "datos_incidencia.csv", header = TRUE, sep = ",")
+```
+
+```{r}
+base_2 <- read.csv(file = "base_2.csv", header = TRUE)
+knitr::kable(base_2)
+```
+
+### Eliminamos la columna Especie para trabajar con las variables Sitio 1 y Sitio 2:
+
+```{r}
+curva_incidencia <- (curva_incidencia[,2:3])
+```
+
+
+
+### Damos valor a la extrapolación (e.g. Doble del número de unidades de muestreo):
+
+```{r}
+t <- seq (1,700)
+```
+
+### Corremos el análisis y creamos un objeto:
+
+```{r}
+iNEXT(curva_incidencia, q = 0, datatype = "incidence_freq", size = t)
+curva_incidence <- iNEXT(curva_incidencia, q = 0, datatype = "incidence_freq", size = t)
+```
+
+### Graficamos por medio del tamaño de la muestra (número de unidades de muestreo):
+
+```
+ggiNEXT(curva_incidence, type = 1, se = TRUE, color.var = "site", grey = FALSE) + theme_classic(base_size = 12) + theme(legend.position = "bottom", 
+text = element_text(size = 12), legend.title = element_blank()) + 
+labs (x = "Unidades de muestreo", y = "Diversidad de especies")
+```
+![](curva_4.jpeg)
+
+### Graficamos la curva de la cobertura de la muestra:
+
+```
+ggiNEXT(curva_incidence, type = 2, se = TRUE, color.var = "site", grey = FALSE) + theme_classic(base_size = 12) + theme(legend.position = "bottom", text = element_text(size = 12), legend.title = element_blank()) + labs (x = "Unidades de muestreo", y = "Diversidad de especies")
+```
+![](curva_5.jpeg)
+
+### Graficamos la curva de R/E basada en la cobertura de la muestra:
+
+```
+ggiNEXT(curva_incidence, type = 3, se = TRUE, color.var = "site", grey = FALSE) + theme_classic(base_size = 12) + theme(legend.position = "bottom", text = element_text(size = 12), legend.title = element_blank()) + labs (x = "Unidades de muestreo", y = "Diversidad de especies")
+```
+![](curva_6.jpeg)
+
+### Literatura citada
+
+Chao, A., Gotelli, N. J., Hsieh, T. C., Sander, E. L., Ma, K. H., Colwell, R. K., & Ellison, A. M. (2014). Rarefaction and extrapolation with Hill numbers: a framework for sampling and estimation in species diversity studies. Ecological Monographs, 84, 45–67.
+
+Chao, A. & Jost, L. (2012). Coverage-based rarefaction and extrapolation: standardizing samples by completeness rather tan size. Ecology, 93(12), 2533-2547.
+
+Hill, M. O. (1973). Diversity and evenness: a unifying notation and its consequences. Ecology, 54, 427–432.
+
+
+
+
+
