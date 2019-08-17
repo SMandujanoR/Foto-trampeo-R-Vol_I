@@ -397,7 +397,7 @@ dateFormat = "%d/%m/%Y")
 
 También se puede obtener la gráfica (Figura \@ref(fig:d14)) del período de operación de las cámaras:
 
-```{r d14, fig.cap="Ejemplo de días de trabajo de cinco cámaras.", echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width="85%"}
+```{r d14, echo=FALSE, fig.align='center', fig.cap="Ejemplo de días de trabajo de cinco cámaras.", message=FALSE, warning=FALSE, out.width="85%"}
 camopPlot <- function(camOp){which.tmp <- 
 grep(as.Date(colnames(camOp)), pattern = "01$")
 label.tmp <- format(as.Date(colnames(camOp))
