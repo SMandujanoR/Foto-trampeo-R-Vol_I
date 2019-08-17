@@ -7,7 +7,7 @@ output:
 
 # Inter/extrapolación de la diversidad: `iNEXT`
 
-### *Julio Hernández-Hernández* {-}
+### *Julio C. Hernández-Hernández* {-}
 
 ## Introducción
 

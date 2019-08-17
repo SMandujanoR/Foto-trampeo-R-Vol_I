@@ -445,7 +445,7 @@ write.csv(hist_captura_venado,
           "historia captura venado.csv")
 ```
 
-## Sumario
+## Sumario 
 
 El paquete `camtrapR` es eficiente para renombrar automáticamente las imágenes, extraer sus metadatos en archivos *.csv, generar gráficos exploratorios de la información y crear bases para análisis de ocupación. Otra ventaja es que en `camtrapR` no es necesario importar cada una de las imágenes, a diferencia de otros programas. Otra de las ventajas es que lee imágenes ilimitadamente ya que las fotos se guardan en directorios locales y al mismo tiempo se pueden trasladar fácilmente a otros equipos de cómputo. Además, permite editar los metadatos como la fecha; corregir por ejemplo la hora de captura de la foto en caso de que sea errónea, lo cual no se puede hacer en los otros programas. Si se utilizan etiquetas se pueden comparar especies o individuos identificados por dos o más observadores. Finalmente, como organizador y gestor de fotos, `camtrapR` permite trasladar datos y archivos a sistemas de información geográfica de un modo relativamente similar al programa  `Camera Trap Manager` [@Zaragozi2015]. Asimismo, permite crear archivos para el análisis en otros programas como `PRESENCE`, `MARK`, y paquetes R como `unmarked`, `secr`, entre otros.
 
