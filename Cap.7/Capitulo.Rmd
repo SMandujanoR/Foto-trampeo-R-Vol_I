@@ -22,9 +22,9 @@ Uno de los principales objetivos en los estudios ecológicos es conocer cuántas
 \pagebreak
 
 Uno de los métodos que se comenzó a utilizar con más frecuencia para conocer la riqueza de especies total de una comunidad fueron las curvas de acumulación de especies. Estas curvas muestran el número de especies acumuladas conforme se va aumentando el esfuerzo de recolecta en un sitio, de tal manera que la riqueza aumentará hasta que llegue un momento en el cual por más que se recolecte, el número de especies alcanzará un máximo y se estabilizará en una asíntota. La idea central se presenta en la figura 
-\@ref(fig:e1)).
+\@ref(fig:e1).
 
-```{r e1, echo=FALSE, message=FALSE, warning=FALSE, fig.cap= "Ejemplo de la relación esfuerzo de muestreo y número de especie. (Basado en Escalante 2013).", fig.align='center', out.width= "75%"}
+```{r e1, echo=FALSE, message=FALSE, warning=FALSE, fig.cap= "Ejemplo de la relación esfuerzo de muestreo y número de especie. (Basado en Escalante, 2013).", fig.align='center', out.width= "75%"}
 F1<- load.image('Fig1.png')
 plot(F1, axes= F)
 ```
