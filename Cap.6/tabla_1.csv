@@ -1,0 +1,8 @@
+Función ,Descripción 
+iNEXT ( ),Inter/extrapolación de números de Hill
+ChaoRichness ( ), riqueza de especies
+ChaoShannon ( ),diversidad Shannon
+ChaoSimpson ( ),diversidad Simpson
+estimateD ( ),diversidad de especies tamaño/cobertura de muestra
+ggiNEXT ( ),ggplot2 curvas de rarefacción / extrapolación
+DataInfo ( ),resumen de información
