@@ -1,0 +1,10 @@
+Argumento,Descripción
+x,"Matriz, data.frame, lista de abundancias/incidencias de especies, o lista de frecuencias de incidencia."
+q,"Número o vector que especifica los órdenes de diversidad de los números de Hill (0, 1, 2)"
+Datatype,"Tipo de datos de entrada, ""abundance"", ""incidencia_freq"" o ""incidencia_raw"""
+Size,"Vector entero del tamaño de muestra para el cual se calcularán las estimaciones de diversidad. Si es NULL, las estimaciones de diversidad se calcularán para los tamaños de muestra determinados por el valor especificado de endpoint y knots."
+endpoint,"Número entero que especifica el tamaño de muestra para el cálculo de Rarefaction/Extrapolation. Si es NULL, entonces el endpoint=double del tamaño de la muestra de referencia."
+Knots,"Un número entero que especifica el número de Knots igualmente espaciados (40, por defecto) entre el tamaño 1 y el punto final (endpoint)."
+se,Variable lógica para calcular el error estándar y el intervalo de confianza de un nivel especificado por conf.
+conf,Número positivo <1 que especifica el nivel de intervalo de confianza
+nboot,Un entero que especifica el número de repeticiones de bootstrap (remuestreo). 
