@@ -1,4 +1,11 @@
-# Para instalar los paquetes que se emplean en este libro, se sugiere ejectuar este código:
+##############################################
+# INSTALACIÓN DE PAQUETES
+##############################################
+getwd()
+
+# Se puede instalar uno por uno cada paquete desde RStudio/Packages/Install. Se sugiere instalar simultáneamente todas las dependencias asociadas a cada paquete.
+
+# Alternativamente, para instalar los paquetes que se emplean en este libro, se sugiere ejectuar este código:
   
 paquetes <- c("imager", "vegan", "unmarked", "secr", 
               "agricolae", "wiqid", "SPACECAP", "jagsUI", "iNEXT", 
@@ -22,10 +29,9 @@ pkgs_miss <- paquetes[!(paquetes %in%
 if(length(pkgs_miss) > 0L)
 install.packages(pkgs_miss, repos = "https://cloud.r-project.org/", dependencies = TRUE)
 
-# Alternativamente se pueden instalar uno por uno cada paquete desde RStudio/Packages/Install. Se sugiere instalar simultáneamente todas las dependencias asociadas a cada paquete.
 
-##############################################
-getwd()
+########################################################
+# FIN SCRIPT
+rm(list = ls()) 
+dev.off() 
 
-library(knitr)
-opts_knit$set(root.dir = "/Users/SMandujanoR/Documents/GitHub/x/Foto-trampeo-R-Vol_I")
