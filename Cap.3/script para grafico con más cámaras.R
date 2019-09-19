@@ -1,5 +1,5 @@
 
-sitio_2 <- read.csv("actividad de camaras sitio_2.csv")
+sitio_2 <- read.csv("Cap.3/actividad de camaras sitio_2.csv")
 
 cam_activas_sitio_2 <- cameraOperation(CTtable = sitio_2,
                                        stationCol = "Station",
