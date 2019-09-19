@@ -1,5 +1,9 @@
 # Foto-trampeo-R-Vol_I
 
+A todos los usuarios:
+
+Antes que nada agradecerles la adquisción del libro, espero sea de mucha utilidad en sus proyectos...!
+
 Material suplementario (códigos R, .csv, imágenes) de cada capítulo del libro Foto-trampeo en R: Vol I
 
 Se sugiere que se clone y bajen todos los capítulos como .ZIP
