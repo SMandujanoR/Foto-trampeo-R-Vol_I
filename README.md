@@ -4,7 +4,7 @@ A todos los usuarios:
 
 Antes que nada agradecerles la adquisción del libro, espero sea de mucha utilidad en sus proyectos...!
 
-Material suplementario (códigos R, .csv, imágenes) de cada capítulo del libro Foto-trampeo en R: Vol I
+En este repositorio encontrarán todo el Material Suplementario (códigos R, .csv, imágenes) necesario para ejectuar los ejemplos del libro. El material está organizado en carpetas que corresponden a cada capítulo del libro Foto-trampeo en R: Vol I. 
 
 Se sugiere que se clone y bajen todos los capítulos como .ZIP
 Luego crear un proyecto RStudio (.Rproj) ya sea de todo el libro o bien uno por capítulo.
