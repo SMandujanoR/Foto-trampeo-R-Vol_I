@@ -68,7 +68,7 @@ En este repositorio encontrarán todo el Material Suplementario (códigos R, .cs
 
 ## Contacto
 
-Si encuentra algún error o tiene problema para ejecutar algún código, no dude en contactarnos en:
+Si encuentras algún error o tienes problemas para ejecutar algún código, no dudes en contactarnos en:
 
 - <salvador.mandujano@inecol.mx>
 
