@@ -54,7 +54,7 @@ El presente libro está concebido como una guía práctica donde se introduce el
 
 Luego donde dice `Clone or download` bajar el `.zip`. Una vez que esté en su computador, se sugiere crear un proyecto en `RStudio` con todos los capítulos, o bien un proyecto por capítulo. 
 
-<img align="rigth" src="bajar.png" alt="drawing" width="300"/>
+<img align="rigth" src="bajar.png" alt="drawing" width="500"/>
 
 En este repositorio encontrarán todo el Material Suplementario (códigos R, .csv, imágenes) necesario para ejectuar los ejemplos del libro. El material está organizado en carpetas que corresponden a cada capítulo del libro Foto-trampeo en R: Vol I. 
 
