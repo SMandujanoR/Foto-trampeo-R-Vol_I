@@ -2,7 +2,9 @@
 
 ### Antes que nada agradecerles la adquisción del libro, esperamos sea de mucha utilidad en sus proyectos...!
 
-<img align="rigth" src="portada.png" alt="drawing" width="500"/>
+<img align="rigth" src="adicionales/portada.png" alt="drawing" width="500"/>
+
+<img align="rigth" src="adicionales/contraportada.png" alt="drawing" width="500"/>
 
 *Mandujano, S. y L.A. Pérez-Solano. (Eds.). 2019. Fototrampeo en R: organización y análisis de datos. Volumen I. Instituto de Ecología A.C., Xalapa, Ver., México. 248 pp.*
 
@@ -49,12 +51,15 @@ El volumen I del libro *Foto-trampeo en R: organización y análisis de datos* e
 __Parte I: Foto-trampeo y R__. En esta sección se introduce de manera general el empleo de las cámaras-trampa enfatizando tres aspectos fundamentales: ¿para qué se quiere emplear el foto-trampeo?, ¿qué aspectos generales se deben considerar para el muestreo? y ¿qué es lo que se está realmente detectando con las cámaras? 
 
 __Parte II: Organización y gestión de fotos__. Esta sección está integrada por tres capítulos que en conjunto tratan de responder las preguntas ¿cómo organizar las miles de fotos de manera que sea sencillo etiquetarlas, almacenarlas y luego consultarlas?, ¿qué programas existen para este fin? y ¿cómo generar archivos de esta información que puedan luego emplearse en otros programas y paquetes R para el análisis numérico y estadístico? Entre las diferentes opciones, basado en nuestra experiencia, el empleo de `DigiKam` y `camtrapR` pueden ayudar a resolver de manera muy eficiente estos aspectos. Alternativamente, el programa `WildID` es muy amable y sencillo de emplear para estos mismos objetivos. 
-
 __Parte III: Análisis de riqueza, diversidad y abundancia relativa__. Esta sección está integrada por cuatro capítulos. Para analizar la información a nivel de riqueza y diversidad, en tres capítulos se describen los paquetes `BiodiversityR`, `vegan` e `iNEXT`. Para el cálculo de los llamados índices de abundancia relativa, en el cuarto capítulo de esta sección se introduce el paquete `RAI` en desarrollo.
 
 __Parte IV: Análisis de actividad y uso de recursos__. Esta sección está integrada por cinco capítulos. En los dos primeros se introducen los paquetes `overlap` y `circular` para analizar datos de actividad. Mientras que en los dos últimos se emplean varios paquetes como `ggplot2` un excelente graficador, `data.table`, `dplyr`, `tidyverse` y otros para procesar datos de cámaras colocadas en recursos específicos que atraen a la fauna como son los bebederos y los árboles fructificando.
 
-## Datos y códigos empleados en los ejemplos{-}
+## Contenido de los capítulos
+
+<img align="rigth" src="adicionales/Col1.jpg" alt="drawing" width="800"/>
+
+## Datos y códigos empleados en los ejemplos
 
 El presente libro está concebido como una guía práctica donde se introduce el empleo de varios paquetes `R`. Para esto, empleamos un conjunto de datos modificados de nuestros proyectos de investigación. Es importante mencionar que el libro no se enfoca en la interpretación o reportar los resultados de casos de estudio particulares, sino que emplea un conjunto de esos datos para ejemplificar el empleo de los diferentes paquetes. En este sentido, el lector podrá bajar el archivo `.zip` que contiene todos los datos y los códigos de cada uno de los capítulos. Además, en las carpetas se incluyen las figuras a color publicadas en escalas de grisis en la versión impresa del libro. Se sugiere visitar el repositorio del libro en `GitHub` en la siguiente dirección:
 
@@ -62,7 +67,7 @@ El presente libro está concebido como una guía práctica donde se introduce el
 
 Luego donde dice `Clone or download` bajar el `.zip`. Una vez que esté en su computador, se sugiere crear un proyecto en `RStudio` con todos los capítulos, o bien un proyecto por capítulo. 
 
-<img align="rigth" src="bajar.png" alt="drawing" width="800"/>
+<img align="rigth" src="adicionales/bajar.png" alt="drawing" width="800"/>
 
 En este repositorio encontrarán todo el Material Suplementario (códigos R, .csv, imágenes) necesario para ejectuar los ejemplos del libro. El material está organizado en carpetas que corresponden a cada capítulo del libro Foto-trampeo en R: Vol I. 
 
