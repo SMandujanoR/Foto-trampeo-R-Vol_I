@@ -36,7 +36,7 @@ En este sentido, este libro surge como una propuesta para dar a conocer y recopi
 
 ## Estructura del libro
 
-El volumen I del libro "*Foto-trampeo en R: organización y análisis de datos*" está integrado por 13 capítulos organizados en cuatro secciones o partes.
+El volumen I del libro *Foto-trampeo en R: organización y análisis de datos* está integrado por 13 capítulos organizados en cuatro secciones o partes.
 
 __Parte I: Foto-trampeo y R__. En esta sección se introduce de manera general el empleo de las cámaras-trampa enfatizando tres aspectos fundamentales: ¿para qué se quiere emplear el foto-trampeo?, ¿qué aspectos generales se deben considerar para el muestreo? y ¿qué es lo que se está realmente detectando con las cámaras? 
 
@@ -65,6 +65,37 @@ En este repositorio encontrarán todo el Material Suplementario (códigos R, .cs
   5) Adicionalmente, en los capítulos se han incluido en color las figuras de cada capítulo.
   6) Se sugiere ejecute los códigos empleando los códigos R y datos aquí anexados. 
   7) Posteriormente, puede sustituir con su propios datos cada .csv para analizarlos dependiendo de los objetivos.
+  8) Para instalar los paquetes que se emplean en este libro se sugiere ejecutar el código de la carpeta `instalar paquetes` o  bien copiar las siguientes líneas y ejectuarla en un nuevo *script* o código:
+
+```
+paquetes <- c("imager", "vegan", "unmarked", "secr", 
+"agricolae", "wiqid", "SPACECAP", "jagsUI", "iNEXT", 
+"BiodiversityR", "overlap", "circular", "camtrapR", 
+"rgdal", "ggplot2", "PerformanceAnalytics", 
+"RColorBrewer", "MASS", "MuMin",   "bibtex", "dplyr", 
+"ade4", "adehabitatHR", "adehabitatLT", "agricolae", 
+"akima", "boot", "chron", "dunn.test", "ggExtra", 
+"ggplot2", "gtools", "jagsUI", "KernSmooth", 
+"maptools", "MASS", "mgcv", "overlap", "plotrix", 
+"raster", "RColorBrewer", "reshape", "rgdal", 
+"rgeos", "rmarkdown", "scrbook", "secr", "sp", 
+"survival", "survminer", "tree", "unmarked", 
+"vegan", "wiqid", "maps", "GIStools", "WDI", 
+"Scales", "shapefiles", "RgoogleMaps", "tidyverse",
+"data.table", "reshape2", "effects")
+  
+pkgs_miss <- paquetes[!(paquetes %in% 
+                        installed.packages())]
+    
+if(length(pkgs_miss)>0L)
+      install.packages(pkgs_miss, repos = 
+      "https://cloud.r-project.org/", 
+                          dependencies = TRUE)
+```
+
+## Libro dinámico
+
+El libro *Foto-trampeo en R* es un fiel reflejo de lo que tratamos de enfatizar: `R` es un excelente recurso para organizar, analizar y reportar los datos y resultados del foto-trampeo. Este libro fue escrito completamente desde `R` empleando los paquetes `RMarkdown` y `bookdown` ejecutados desde la plataforma `Rstudio`. 
 
 ## Contacto
 

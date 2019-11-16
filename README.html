@@ -225,7 +225,7 @@ $(document).ready(function () {
 </div>
 <div id="estructura-del-libro" class="section level2">
 <h2>Estructura del libro</h2>
-<p>El volumen I del libro “<em>Foto-trampeo en R: organización y análisis de datos</em>” está integrado por 13 capítulos organizados en cuatro secciones o partes.</p>
+<p>El volumen I del libro <em>Foto-trampeo en R: organización y análisis de datos</em> está integrado por 13 capítulos organizados en cuatro secciones o partes.</p>
 <p><strong>Parte I: Foto-trampeo y R</strong>. En esta sección se introduce de manera general el empleo de las cámaras-trampa enfatizando tres aspectos fundamentales: ¿para qué se quiere emplear el foto-trampeo?, ¿qué aspectos generales se deben considerar para el muestreo? y ¿qué es lo que se está realmente detectando con las cámaras?</p>
 <p><strong>Parte II: Organización y gestión de fotos</strong>. Esta sección está integrada por tres capítulos que en conjunto tratan de responder las preguntas ¿cómo organizar las miles de fotos de manera que sea sencillo etiquetarlas, almacenarlas y luego consultarlas?, ¿qué programas existen para este fin? y ¿cómo generar archivos de esta información que puedan luego emplearse en otros programas y paquetes R para el análisis numérico y estadístico? Entre las diferentes opciones, basado en nuestra experiencia, el empleo de <code>DigiKam</code> y <code>camtrapR</code> pueden ayudar a resolver de manera muy eficiente estos aspectos. Alternativamente, el programa <code>WildID</code> es muy amable y sencillo de emplear para estos mismos objetivos.</p>
 <p><strong>Parte III: Análisis de riqueza, diversidad y abundancia relativa</strong>. Esta sección está integrada por cuatro capítulos. Para analizar la información a nivel de riqueza y diversidad, en tres capítulos se describen los paquetes <code>BiodiversityR</code>, <code>vegan</code> e <code>iNEXT</code>. Para el cálculo de los llamados índices de abundancia relativa, en el cuarto capítulo de esta sección se introduce el paquete <code>RAI</code> en desarrollo.</p>
@@ -246,11 +246,39 @@ $(document).ready(function () {
 <li>Adicionalmente, en los capítulos se han incluido en color las figuras de cada capítulo.</li>
 <li>Se sugiere ejecute los códigos empleando los códigos R y datos aquí anexados.</li>
 <li>Posteriormente, puede sustituir con su propios datos cada .csv para analizarlos dependiendo de los objetivos.</li>
+<li>Para instalar los paquetes que se emplean en este libro se sugiere ejecutar el código de la carpeta <code>instalar paquetes</code> o bien copiar las siguientes líneas y ejectuarla en un nuevo <em>script</em> o código:</li>
 </ol>
+<pre><code>paquetes &lt;- c(&quot;imager&quot;, &quot;vegan&quot;, &quot;unmarked&quot;, &quot;secr&quot;, 
+&quot;agricolae&quot;, &quot;wiqid&quot;, &quot;SPACECAP&quot;, &quot;jagsUI&quot;, &quot;iNEXT&quot;, 
+&quot;BiodiversityR&quot;, &quot;overlap&quot;, &quot;circular&quot;, &quot;camtrapR&quot;, 
+&quot;rgdal&quot;, &quot;ggplot2&quot;, &quot;PerformanceAnalytics&quot;, 
+&quot;RColorBrewer&quot;, &quot;MASS&quot;, &quot;MuMin&quot;,   &quot;bibtex&quot;, &quot;dplyr&quot;, 
+&quot;ade4&quot;, &quot;adehabitatHR&quot;, &quot;adehabitatLT&quot;, &quot;agricolae&quot;, 
+&quot;akima&quot;, &quot;boot&quot;, &quot;chron&quot;, &quot;dunn.test&quot;, &quot;ggExtra&quot;, 
+&quot;ggplot2&quot;, &quot;gtools&quot;, &quot;jagsUI&quot;, &quot;KernSmooth&quot;, 
+&quot;maptools&quot;, &quot;MASS&quot;, &quot;mgcv&quot;, &quot;overlap&quot;, &quot;plotrix&quot;, 
+&quot;raster&quot;, &quot;RColorBrewer&quot;, &quot;reshape&quot;, &quot;rgdal&quot;, 
+&quot;rgeos&quot;, &quot;rmarkdown&quot;, &quot;scrbook&quot;, &quot;secr&quot;, &quot;sp&quot;, 
+&quot;survival&quot;, &quot;survminer&quot;, &quot;tree&quot;, &quot;unmarked&quot;, 
+&quot;vegan&quot;, &quot;wiqid&quot;, &quot;maps&quot;, &quot;GIStools&quot;, &quot;WDI&quot;, 
+&quot;Scales&quot;, &quot;shapefiles&quot;, &quot;RgoogleMaps&quot;, &quot;tidyverse&quot;,
+&quot;data.table&quot;, &quot;reshape2&quot;, &quot;effects&quot;)
+  
+pkgs_miss &lt;- paquetes[!(paquetes %in% 
+                        installed.packages())]
+    
+if(length(pkgs_miss)&gt;0L)
+      install.packages(pkgs_miss, repos = 
+      &quot;https://cloud.r-project.org/&quot;, 
+                          dependencies = TRUE)</code></pre>
+</div>
+<div id="libro-dinamico" class="section level2">
+<h2>Libro dinámico</h2>
+<p>El libro <em>Foto-trampeo en R</em> es un fiel reflejo de lo que tratamos de enfatizar: <code>R</code> es un excelente recurso para organizar, analizar y reportar los datos y resultados del foto-trampeo. Este libro fue escrito completamente desde <code>R</code> empleando los paquetes <code>RMarkdown</code> y <code>bookdown</code> ejecutados desde la plataforma <code>Rstudio</code>.</p>
 </div>
 <div id="contacto" class="section level2">
 <h2>Contacto</h2>
-<p>Si encuentra algún error o tiene problema para ejecutar algún código, no dude en contactarnos en:</p>
+<p>Si encuentras algún error o tienes problemas para ejecutar algún código, no dudes en contactarnos en:</p>
 <ul>
 <li><p><a href="mailto:salvador.mandujano@inecol.mx">salvador.mandujano@inecol.mx</a></p></li>
 <li><p><a href="mailto:adriana.perez.s@outlook.com">adriana.perez.s@outlook.com</a></p></li>
