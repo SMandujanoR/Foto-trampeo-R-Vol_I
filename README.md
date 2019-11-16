@@ -6,6 +6,14 @@
 
 *Mandujano, S. y L.A. Pérez-Solano. (Eds.). 2019. Fototrampeo en R: organización y análisis de datos. Volumen I. Instituto de Ecología A.C., Xalapa, Ver., México. 248 pp.*
 
+## Para adquirir el libro
+
+Si te interesa el libro en físico contáctanos en:
+
+- <salvador.mandujano@inecol.mx>
+
+- <adriana.perez.s@outlook.com>
+
 ## Objetivos del libro
 
 El libro *Foto-trampeo en R* tiene los siguientes objetivos:
@@ -17,15 +25,6 @@ El libro *Foto-trampeo en R* tiene los siguientes objetivos:
 3. Analizar la información para diferentes objetivos como: estimar la ocupación, abundancia y densidad poblacional; la actividad y traslape; y la riqueza y diversidad de especies; y otros temas relacionados con el diseño y muestreo.
 
 4. Conocer libros, artículos y recursos en internet sobre el foto-trampeo.
-
-## Para adquirir el libro
-
-Si te interesa el libro en físico contáctanos en:
-
-- <salvador.mandujano@inecol.mx>
-
-- <adriana.perez.s@outlook.com>
-
 
 ## Origen del libro
 
@@ -57,13 +56,13 @@ __Parte IV: Análisis de actividad y uso de recursos__. Esta sección está inte
 
 ## Datos y códigos empleados en los ejemplos{-}
 
-El presente libro está concebido como una guía práctica donde se introduce el empleo de varios paquetes `R`. Para esto, empleamos un conjunto de datos reales extraídos de nuestros proyectos de investigación. Es importante mencionar que el libro no se enfoca en la interpretación o reportar los resultados de casos de estudio particulares, sino que emplea un conjunto de esos datos para ejemplificar el empleo de los diferentes paquetes. En este sentido, el lector podrá bajar el archivo `.zip` que contiene todos los datos y los códigos de cada uno de los capítulos. Además, en las carpetas se incluyen las figuras a color publicadas en escalas de grisis en la versión impresa del libro. Se sugiere visitar el sitio:
+El presente libro está concebido como una guía práctica donde se introduce el empleo de varios paquetes `R`. Para esto, empleamos un conjunto de datos modificados de nuestros proyectos de investigación. Es importante mencionar que el libro no se enfoca en la interpretación o reportar los resultados de casos de estudio particulares, sino que emplea un conjunto de esos datos para ejemplificar el empleo de los diferentes paquetes. En este sentido, el lector podrá bajar el archivo `.zip` que contiene todos los datos y los códigos de cada uno de los capítulos. Además, en las carpetas se incluyen las figuras a color publicadas en escalas de grisis en la versión impresa del libro. Se sugiere visitar el repositorio del libro en `GitHub` en la siguiente dirección:
 
 <https://github.com/SMandujanoR/Foto-trampeo-R-Vol_I> 
 
 Luego donde dice `Clone or download` bajar el `.zip`. Una vez que esté en su computador, se sugiere crear un proyecto en `RStudio` con todos los capítulos, o bien un proyecto por capítulo. 
 
-<img align="rigth" src="bajar.png" alt="drawing" width="600"/>
+<img align="rigth" src="bajar.png" alt="drawing" width="800"/>
 
 En este repositorio encontrarán todo el Material Suplementario (códigos R, .csv, imágenes) necesario para ejectuar los ejemplos del libro. El material está organizado en carpetas que corresponden a cada capítulo del libro Foto-trampeo en R: Vol I. 
 
