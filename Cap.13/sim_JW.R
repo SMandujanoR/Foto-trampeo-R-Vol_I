@@ -1,4 +1,8 @@
-# se crean dos funciones:
+################################################################
+# Mandujano, S. y L.A. Pérez-Solano. (Eds.). 2019. Fototrampeo en R: organización y análisis de datos. Volumen I. Instituto de Ecología A.C., Xalapa, Ver., México. 248 pp. ISBN: 978-607-7579-90-8
+################################################################
+# Funciones para el capítulo
+################################################################
 
 JW <- function(x, y, HR) {
   for (j in 1:N) {

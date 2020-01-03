@@ -1,6 +1,9 @@
 ################################################################
+# Mandujano, S. y L.A. Pérez-Solano. (Eds.). 2019. Fototrampeo en R: organización y análisis de datos. Volumen I. Instituto de Ecología A.C., Xalapa, Ver., México. 248 pp. ISBN: 978-607-7579-90-8
+################################################################
 # CAPÍTULO 12
-# 
+# Interacciones fruto-mamíferos: data.table, tidyverse, reshape2, dplyr
+# Angela A. Camargo-sanabria y Carlos M. Delgador-Martínez
 ################################################################
 
 library(data.table)

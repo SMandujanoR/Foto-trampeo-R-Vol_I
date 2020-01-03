@@ -1,4 +1,9 @@
-#Script complementario al capítulo#
+#############################################################
+# Mandujano, S. y L.A. Pérez-Solano. (Eds.). 2019. Fototrampeo en R: organización y análisis de datos. Volumen I. Instituto de Ecología A.C., Xalapa, Ver., México. 248 pp. ISBN: 978-607-7579-90-8
+########################################################
+# Script complementario al capítulo
+# Carlos Hernández-Gómez
+########################################################
 
 #Se cargan las librerias necesarias#
 library(ggplot2) #Para los gráficos
@@ -15,8 +20,7 @@ Tasa <- with(datos,round((Eventos/Esfuerzo)*100, 2))
 tabla <- cbind(datos, Tasa)
 write.csv(tabla, "datos_2.csv") #En caso de querer guardar un .csv con la tasa
 
-#Para visualizar la tasa#
-#
+#Para visualizar la tasa
 #Todos lo escrito entre comillas se puede modificar, para cambiar los colores empleados, la posición del título, nombres de los ejes. También se puede cambiar el tamaño de los títulos y leyendas cambiando el argumento size.rel(), se puede modificar el eje y con el argumento ylim(), colocando el valor mínimo y máximo que tomará el eje, también se puede cambiar la posición de la etiqueta especificando las coordenadas dentro de legend.position =  c()#
 
 #Se cargan los datos que ya incluyen la tasa de visita#

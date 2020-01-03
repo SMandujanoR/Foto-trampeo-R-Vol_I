@@ -1,8 +1,10 @@
-###########################################
-# Paquete RAI: versión una función 
+################################################################
+# Mandujano, S. y L.A. Pérez-Solano. (Eds.). 2019. Fototrampeo en R: organización y análisis de datos. Volumen I. Instituto de Ecología A.C., Xalapa, Ver., México. 248 pp. ISBN: 978-607-7579-90-8
+########################################################
+# Paquete RAI: versión una sola función 
 # Salvador Mandujano Rodríguez
 # Octubre 4, 2018
-##########################################
+#########################################################
 
 RAI <- function() {
   cat("----- \n HOLA...! \n AQUÍ INICIA EL PROCESO \n -----")

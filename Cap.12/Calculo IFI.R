@@ -1,4 +1,10 @@
-###para la etapa 4
+################################################################
+# Mandujano, S. y L.A. Pérez-Solano. (Eds.). 2019. Fototrampeo en R: organización y análisis de datos. Volumen I. Instituto de Ecología A.C., Xalapa, Ver., México. 248 pp. ISBN: 978-607-7579-90-8
+################################################################
+### Código para la etapa 4
+# Angela A. Camargo-sanabria y Carlos M. Delgador-Martínez
+################################################################
+
 
 library(dplyr)
 EM<-read.csv("EM_Station.csv",header = T)
