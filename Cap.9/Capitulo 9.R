@@ -6,11 +6,9 @@
 # Eva López-Tello
 ########################################################
 
-setwd("Cap.9/")
-
 library(overlap)
 
-actividad_RBTC <- read.csv("tabla registros.csv", header = T)
+actividad_RBTC <- read.csv("Cap.9/tabla registros.csv", header = T)
 
 summary(actividad_RBTC$Species)
 

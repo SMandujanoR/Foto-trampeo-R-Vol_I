@@ -10,14 +10,14 @@
 library (camtrapR)
 
 
-Sitio1 <- read.csv ("Ejercicio.csv", header = TRUE, sep=",")
+Sitio1 <- read.csv ("Cap.3/2. camtrapR/Ejercicio.csv", header = TRUE, sep=",")
 View(Sitio1)
 
 #------------------------
 ## CREAR CARPETAS DE TRABAJO
 
 
-directory_original <- file.path("IMAGENES_ORIGINALES") 
+directory_original <- file.path("Cap.3/2. camtrapR/IMAGENES_ORIGINALES") 
 
 
 Sitio1_c <- createStationFolders (inDir = directory_original,
@@ -27,7 +27,7 @@ Sitio1_c <- createStationFolders (inDir = directory_original,
 # --> Arrastrar cada foto a la subcarpeta correspondiente 
 
 
-directory_images_renamed <- file.path("RENAMED")
+directory_images_renamed <- file.path("Cap.3/2. camtrapR/RENAMED")
 
 #------------------------
 ## RENOMBRAR LAS IMAGENES
@@ -98,7 +98,7 @@ head(species_names_remove)
 species_to_copy <- "Odocoileus virginianus" # especificar especie a copiar
 
 #Establecer directorio donde las imagenes seran guardadas
-directory_images_species <- file.path ("RENAMED SPECIES")
+directory_images_species <- file.path ("Cap.3/2. camtrapR/RENAMED SPECIES")
 print (directory_images_species)
 
 species_images <- getSpeciesImages(species = species_to_copy, 
@@ -211,7 +211,7 @@ CTDateFormat = "%d/%m/%Y",
 recordDateTimeCol = "DateTimeOriginal", 
 recordDateTimeFormat = "%Y-%m-%d %H:%M: %S",
 makezip = T, 
-sinkpath = "C:/Taller foto-trampeo R_Chihuahua")
+sinkpath = "Cap.3/2. camtrapR")
 
 #Si se quiere generar un reporte para extraer informacion especifica:
 

@@ -8,20 +8,20 @@
 
 library(camtrapR)
 
-sitio_1 <- read.csv ("actividad de estaciones_1_cam.csv", header = TRUE)
+sitio_1 <- read.csv ("Cap.3/actividad de estaciones_1_cam.csv", header = TRUE)
 head(sitio_1)
 
-(fotos_sitio_1 <- file.path("Sitio_1"))
+(fotos_sitio_1 <- file.path("Cap.3/Sitio_1"))
 
 fotos_sitio_1_carpeta <- createStationFolders(inDir = fotos_sitio_1, stations = as.character(sitio_1$Station), createinDir = TRUE)
 
-fotos_correccion_sitio_1 <- file.path("Corrección_sitio_1")
+fotos_correccion_sitio_1 <- file.path("Cap.3/Corrección_sitio_1")
 
-(tabla_correccion_sitio_1 <- read.csv("correccion de hora.csv", header = TRUE))
+(tabla_correccion_sitio_1 <- read.csv("Cap.3/correccion de hora.csv", header = TRUE))
 
 #fotos_sitio_1_corregidas <- timeShiftImages(inDir = fotos_correccion_sitio_1, timeShiftTable = tabla_correccion_sitio_1, stationCol = "Station", hasCameraFolders = FALSE, timeShiftColumn = "timeshift", timeShiftSignColumn = "sign", undo = F)
 
-fotos_sitio_1_renombradas <- file.path("Sitio_1_R")
+fotos_sitio_1_renombradas <- file.path("Cap.3/Sitio_1_R")
 
 #imageRename(inDir = fotos_sitio_1, outDir = fotos_sitio_1_renombradas, hasCameraFolders = FALSE, keepCameraSubfolders = FALSE, copyImages = TRUE)
 
@@ -35,12 +35,12 @@ especies_sitio_1 <- c("Conejo", "Coyote", "Lince", "Pecarí", "Venado", "Zorra")
 
 createSpeciesFolders(inDir = fotos_sitio_1_renombradas, species = especies_sitio_1, hasCameraFolders = FALSE, removeFolders = FALSE)
 
-fotos_venado_sitio_1 <- file.path("Venado")
+fotos_venado_sitio_1 <- file.path("Cap.3/Venado")
 venado <- "Venado"
 
 # getSpeciesImages(species = "venado", IDfrom = "directory", inDir = fotos_sitio_1_renombradas, outDir = fotos_venado_sitio_1, createStationSubfolders = TRUE)
 
-fotos_sitio_1_renombradas <- file.path("Sitio_1_R")
+fotos_sitio_1_renombradas <- file.path("Cap.3/Sitio_1_R")
 
 tabla_sitio_1 <- recordTable(inDir = fotos_sitio_1_renombradas, IDfrom = "directory", timeZone = "America/Mexico_City", writecsv = FALSE)
 
@@ -51,7 +51,7 @@ tabla_sitio_1_independientes <- recordTable(inDir = fotos_sitio_1_renombradas, I
 #read.csv("tabla sitio 1.csv", header = T)
 #read.csv("tabla sitio 1 independientes.csv", header = T)
 
-fotos_venado_sitio_1 <- file.path("Venado")
+fotos_venado_sitio_1 <- file.path("Cap.3/Venado")
 
 tabla_venado_individuos <- recordTableIndividual(inDir = fotos_venado_sitio_1, IDfrom = "directory", minDeltaTime = 60, deltaTimeComparedTo = "lastIndependentRecord", metadataIDTag = "individuo", hasStationFolders = TRUE, timeZone = "America/Mexico_City")
 
@@ -75,7 +75,7 @@ zorra <- "Zorra"
 conejo <- "Conejo"
 activityOverlap(recordTable =tabla_sitio_1_independientes, speciesA = zorra, speciesB = conejo, writePNG = FALSE, plotR = TRUE, addLegend = TRUE, legendPosition = "topright", linecol = c("grey", "black"), linewidth = c(3,3), add.rug = TRUE, xlab = "Hora", ylab = "Densidad") 
 
-reporte_sitio_1 <- surveyReport(recordTable = tabla_sitio_1_independientes, CTtable = sitio_1, speciesCol = "Species", stationCol = "Station", setupCol = "Fecha_colocación", retrievalCol = "Fecha_retiro", CTDateFormat = "%d/%m/%Y", recordDateTimeCol = "DateTimeOriginal", recordDateTimeFormat = "%Y-%m-%d %H:%M:%S", CTHasProblems = T)
+reporte_sitio_1 <- surveyReport(recordTable = tabla_sitio_1_independientes, CTtable = sitio_1, speciesCol = "Species", stationCol = "Station", setupCol = "Fecha_colocaciÃ³n", retrievalCol = "Fecha_retiro", CTDateFormat = "%d/%m/%Y", recordDateTimeCol = "DateTimeOriginal", recordDateTimeFormat = "%Y-%m-%d %H:%M:%S", CTHasProblems = T)
 
 reporte_sitio_1 [[1]]
 
@@ -85,7 +85,7 @@ reporte_sitio_1 [[3]]
 
 reporte_sitio_1 [[4]]
 
-cam_activas_sitio_1 <- cameraOperation(CTtable = sitio_1, stationCol = "Station", setupCol = "Fecha_colocación", retrievalCol = "Fecha_retiro", hasProblems = T, dateFormat = "%d/%m/%Y")
+cam_activas_sitio_1 <- cameraOperation(CTtable = sitio_1, stationCol = "Station", setupCol = "Fecha_colocaciÃ³n", retrievalCol = "Fecha_retiro", hasProblems = T, dateFormat = "%d/%m/%Y")
 
 camopPlot <- function(camOp){which.tmp <- grep(as.Date(colnames(camOp)), pattern = "01$")
 label.tmp <- format(as.Date(colnames(camOp))[which.tmp], "%Y-%m")

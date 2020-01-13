@@ -13,7 +13,7 @@ source("Cap.8/pkgRAI_1.R")
 wildlife.data <- read.csv("Cap.8/mamiferos.csv", header = T)
 View(wildlife.data)
 
-habitat.data <- read.csv("Cap.8/habitat.csv", header = T)
+habitat.data <- read.csv("Cap.8/habitat.csv", header = T)[,-1] #[,-1]Elimina la primera columna
 View(habitat.data)
 
 # Poner aquí las especies para graficar fotos por cámara
