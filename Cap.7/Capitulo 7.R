@@ -32,3 +32,5 @@ plot(mamiferos2, ci.type = "polygon", ylim = c(0,15),  xlim = c(1,9), lwd = 2, c
 # FIN SCRIPT
 rm(list = ls()) 
 dev.off() 
+
+
