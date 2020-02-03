@@ -4,13 +4,15 @@
 
 # Programa 2020 de Cursos/talleres
 
-### 1. UNAM, Morelia, Mich., México:  23 y 24 enero: `Cerrado`
+### - UNAM, Morelia, Mich., México:  23 y 24 enero: `Cerrado`
 
-### 2. UAEM, Cuernavaca, Mor, México: 22 - 24 abril: `muy pronto inscripciones abiertas`
+### - UAEM, Cuernavaca, Mor, México: 22 - 24 abril: `muy pronto inscripciones abiertas`
 
-### 3. Ecuador: `proximamente`
+### -  "Modelado de ocupación y abundancia: enfoque frecuentista y bayesiano en R", Instituto de Ecología A. C., Xalapa, Ver., México: 22 junio a 3 julio: <http://bit.ly/2Ny8kql>
 
-### 4. Perú: `muy pronto`
+### - Ecuador: `próximamente`
+
+### - Perú: `próximamente` 
 
 <img align="rigth" src="adicionales/portada.png" alt="drawing" width="500"/>
 
