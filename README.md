@@ -8,7 +8,7 @@
 
 *Mandujano, S. y L.A. Pérez-Solano. (Eds.). 2019. Fototrampeo en R: organización y análisis de datos. Volumen I. Instituto de Ecología A.C., Xalapa, Ver., México. 248 pp.*
 
-#  {.tabset .tabset-pills}
+{.tabset .tabset-pills}
 
 ## Para adquirir el libro
 
