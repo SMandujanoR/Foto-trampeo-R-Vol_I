@@ -2,6 +2,13 @@
 
 ### Antes que nada agradecerles la adquisción del libro, esperamos sea de mucha utilidad en sus proyectos...!
 
+# Programa 2020 de Cursos/talleres
+
+1. UNAM, Morelia, Mich., México:  23 y 24 enero: `Cerrado`
+
+2. UAEM, Cuernavaca, Mor, México: 22 - 24 abril: `muy pronto inscripciones abiertas`
+
+
 <img align="rigth" src="adicionales/portada.png" alt="drawing" width="500"/>
 
 <img align="rigth" src="adicionales/contraportada.png" alt="drawing" width="500"/>
