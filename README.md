@@ -8,7 +8,7 @@
 
 ### - UAEM, Cuernavaca, Mor, México: 22 - 24 abril: `muy pronto inscripciones abiertas`
 
-### -  "Modelado de ocupación y abundancia: enfoque frecuentista y bayesiano en R", Instituto de Ecología A. C., Xalapa, Ver., México: 22 junio a 3 julio: <http://bit.ly/2Ny8kql>
+### -  "Modelado de ocupación y abundancia: enfoque frecuentista y bayesiano en R", Instituto de Ecología A. C., Xalapa, Ver., México: 22 junio a 3 julio: <https://bit.ly/2Ny8kql>
 
 ### - Ecuador: `próximamente`
 
