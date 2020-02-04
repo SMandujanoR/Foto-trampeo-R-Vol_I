@@ -4,7 +4,7 @@
 
 # Programa 2020 de Cursos/talleres
 
- - UNAM, Morelia, Mich., México:  23 y 24 enero: `Cerrado`
+ - UNAM, Morelia, Mich., México:  23 y 24 enero: `Impartido`
 
 - UAEM, Cuernavaca, Mor, México: 22 - 24 abril: `muy pronto inscripciones abiertas`
 
