@@ -2,13 +2,28 @@
 
 ### Antes que nada agradecerles la adquisción del libro, esperamos sea de mucha utilidad en sus proyectos...!
 
-# Programa 2020 de Cursos/talleres
+# Talleres
 
-- "Taller Fototrampeo en R", UNAM, Morelia, Mich., México:  23 y 24 enero: `Impartido`
+- "Taller FototrampeoR", BUAP, Puebla, México:  29 noviembre al 3 diciembre 2017.
 
-- "Taller Fototrampeo en R", UAEM, Cuernavaca, Mor, México:  22 al 24 mayo: `Inscripciones abiertas`
+- "Taller FototrampeoR", UCACh, Tuxtla Gutierrez, Chis., México:  26 y 27 noviembre 2018.
+
+- "Taller FototrampeoR", AMMAC, Chihuahua, México:  23 al 25 noviembre 2019.
+
+- "Taller FototrampeooR", UNAM, Morelia, Mich., México:  16 y 17 enero 2020.
+
+ - "Taller FototrampeoR", UNAM, Morelia, Mich., México:  16 y 17 enero 2020.
  
--  "Modelado de ocupación y abundancia: enfoque frecuentista y bayesiano en R", Instituto de Ecología A. C., Xalapa, Ver., México: 22 junio a 3 julio: <> `inscripciones abiertas`
+ - "1er Taller en línea FototrampeoR: Básico", BUAP, Puebla, México:  22 al 26 Junio 2020.
+
+ - "2º Taller en línea FototrampeoR: Básico", BUAP, Puebla, México:  20 al 24 Julio 2020.
+ 
+ - "1er Taller en línea FototrampeoR: Modelado Ocupación", BUAP, Puebla, México:  Septiembre - Octubre 2020.
+ 
+ - "3er Taller en línea FototrampeoR: Básico", Noviembreo 2020 (fecha por definir).
+ 
+ - "Taller en línea FototrampeoR: Modelado Espacial", Noviembreo 2020 (fecha por definir).
+ 
 
 <img align="rigth" src="adicionales/portada.png" alt="drawing" width="500"/>
 
