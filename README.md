@@ -20,10 +20,12 @@
  
  - "1er Taller en línea FototrampeoR: Modelado Ocupación", BUAP, Puebla, México:  Septiembre - Octubre 2020.
  
- - "3er Taller en línea FototrampeoR: Básico", Noviembreo 2020 (fecha por definir).
+ - "3er Taller en línea FototrampeoR: Básico", 2020 (fecha por definir).
  
- - "Taller en línea FototrampeoR: Modelado Espacial", Noviembreo 2020 (fecha por definir).
+ - "Taller en línea FototrampeoR: Modelado Espacial", 2020 (fecha por definir).
  
+  - "Taller en línea FototrampeoR: Captura-Recaptura", 2020 (fecha por definir).
+  
 
 <img align="rigth" src="adicionales/portada.png" alt="drawing" width="500"/>
 
