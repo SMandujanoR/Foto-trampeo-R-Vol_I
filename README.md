@@ -144,6 +144,4 @@ Si encuentras algún error o tienes problemas para ejecutar algún código, no d
 
 - <salvador.mandujano@inecol.mx>
 
-- <adriana.perez.s@outlook.com>
-
 ### ¡Esperamos el libro sea de mucha utilidad para todos ustedes, saludos...!
