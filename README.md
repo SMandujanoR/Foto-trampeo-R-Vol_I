@@ -42,8 +42,6 @@ Si te interesa el libro en físico contáctanos en:
 
 - <salvador.mandujano@inecol.mx>
 
-- <adriana.perez.s@outlook.com>
-
 ## Objetivos del libro
 
 El libro *Foto-trampeo en R* tiene los siguientes objetivos:
