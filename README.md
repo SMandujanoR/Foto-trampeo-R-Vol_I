@@ -4,31 +4,31 @@
 
 # Talleres
 
-- Taller “FototrampeoR: Hábitat-Fauna en R_SIG”, BUAP, Puebla, 1 al 4 Junio 2022. 
+- “FototrampeoR: Hábitat-Fauna en R_SIG”, BUAP, Puebla, 1 al 4 Junio 2022. 
 
-- Taller “FototrampeoR: Análisis de Diversidad”, BUAP, Puebla, 21 al 30 Abril 2022. 
+- “FototrampeoR: Análisis de Diversidad”, BUAP, Puebla, 21 al 30 Abril 2022. 
 
-- Taller “FototrampeoR: Organización y Análisis de Datos”, BUAP, Puebla, 25 Marzo al 2 Abril 2022.
+- “FototrampeoR: Organización y Análisis de Datos”, BUAP, Puebla, 25 Marzo al 2 Abril 2022.
 
-- Taller “Fototrampeo en R”, Congreso Colombiano de Mastozoología, Colombia, Noviembre 2021.
+- “Fototrampeo en R”, Congreso Colombiano de Mastozoología, Colombia, Noviembre 2021.
 
-- Taller “FototrampeoR: Organización y Análisis de Datos”, BUAP, Puebla, 27 Agosto al 4 Septiembre 2021.
+- “FototrampeoR: Organización y Análisis de Datos”, BUAP, Puebla, 27 Agosto al 4 Septiembre 2021.
 
-- Taller “FototrampeoR: Análisis de Diversidad”, BUAP, Puebla, 28 Mayo al 5 Junio 2021. 
+- “FototrampeoR: Análisis de Diversidad”, BUAP, Puebla, 28 Mayo al 5 Junio 2021. 
 
-- Taller “FototrampeoR: Modelado de Ocupación”, BUAP, Puebla, 23 Septiembre al 10 Octubre 2020. 
+- “FototrampeoR: Modelado de Ocupación”, BUAP, Puebla, 23 Septiembre al 10 Octubre 2020. 
 
-- Taller “FototrampeoR: Organización y Análisis de Datos”, BUAP, Puebla, 20 al 24 Julio 2020.
+- “FototrampeoR: Organización y Análisis de Datos”, BUAP, Puebla, 20 al 24 Julio 2020.
 
-- Taller “FototrampeoR: Organización y Análisis de Datos”, BUAP, Puebla, 22 al 26 Junio 2020.
+- “FototrampeoR: Organización y Análisis de Datos”, BUAP, Puebla, 22 al 26 Junio 2020.
 
-- Taller “FototrampeoR: Organización y Análisis de Datos”, UNAM, Morelia, Mich., 16 y 17 de enero de 2020.
+- “FototrampeoR: Organización y Análisis de Datos”, UNAM, Morelia, Mich., 16 y 17 de enero de 2020.
 
-- Taller “FototrampeoR”, AMMAC, Chihuahua, 23 al 25 Noviembre 2019.
+- “FototrampeoR”, AMMAC, Chihuahua, 23 al 25 Noviembre 2019.
 
-- Taller “FototrampeoR”, Instituto de Ciencias Biológicas, Universidad de Ciencias y Artes de Chiapas, Tuxtla Gutierrez, Chis. 26 y 27 Noviembre 2018.
+- “FototrampeoR”, Instituto de Ciencias Biológicas, Universidad de Ciencias y Artes de Chiapas, Tuxtla Gutierrez, Chis. 26 y 27 Noviembre 2018.
 
-- Taller “FototrampeoR”, Benemérita Universidad Autónoma de Puebla, Pue. Noviembre 2017.
+- “FototrampeoR”, Benemérita Universidad Autónoma de Puebla, Pue. Noviembre 2017.
 
 <img align="rigth" src="adicionales/portada.png" alt="drawing" width="500"/>
 
