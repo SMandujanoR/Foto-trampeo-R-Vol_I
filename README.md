@@ -1,5 +1,7 @@
 # Fototrampeo en R: Organización y análisis de datos, Volumen I
 
+<img align="rigth" src="adicionales/portada.png" alt="drawing" width="500"/>
+
 ### Antes que nada agradecerles la adquisción del libro y la participación en nuestros talleres. 
 
 <img align="rigth" src="adicionales/FototrampeoR.jpg" alt="drawing" width="500"/>
@@ -34,9 +36,7 @@
 
 - “FototrampeoR”, Benemérita Universidad Autónoma de Puebla, Pue. Noviembre 2017.
 
-<img align="rigth" src="adicionales/portada.png" alt="drawing" width="500"/>
-
-<img align="rigth" src="adicionales/contraportada.png" alt="drawing" width="500"/>
+<img align="rigth" src="adicionales/IMG-20220611-WA0002.jpg" alt="drawing" width="500"/>
 
 *Mandujano, S. y L.A. Pérez-Solano. (Eds.). 2019. Fototrampeo en R: organización y análisis de datos. Volumen I. Instituto de Ecología A.C., Xalapa, Ver., México. 248 pp.*
 
