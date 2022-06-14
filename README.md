@@ -2,6 +2,8 @@
 
 ### Antes que nada agradecerles la adquisción del libro y la participación en nuestros talleres. 
 
+<img align="rigth" src="adicionales/FototrampeoR.jpg" alt="drawing" width="500"/>
+
 ### Esperamos sea de mucha utilidad en sus proyectos...!
 
 # Talleres
