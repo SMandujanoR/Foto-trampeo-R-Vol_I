@@ -1,6 +1,8 @@
 # Fototrampeo en R: Organización y análisis de datos, Volumen I
 
-### Antes que nada agradecerles la adquisción del libro, esperamos sea de mucha utilidad en sus proyectos...!
+### Antes que nada agradecerles la adquisción del libro y la participación en nuestros talleres. 
+
+### Esperamos sea de mucha utilidad en sus proyectos...!
 
 # Talleres
 
