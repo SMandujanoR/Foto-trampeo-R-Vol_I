@@ -14,11 +14,11 @@
 
 - “FototrampeoR”, XIV Congreso de Mastozoología de la AMMAC, Chihuahua, 13 al 15 Octubre 2022.
 
+### Pasados
+
 - “FototrampeoR: Modelado de Captura-Recaptura Espacialmente Explícita (SECR)”, BUAP, 5-15 Agosto 2022. 
 
 - “FototrampeoR: Modelado de Ocupación”, BUAP 1-5 Julio 2022. 
-
-### Pasados
 
 - “FototrampeoR: Hábitat-Fauna en R_SIG”, BUAP, Puebla, 1 al 4 Junio 2022. 
 
