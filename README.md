@@ -56,9 +56,9 @@ Si te interesa el libro en físico contáctanos en:
 
 - <salvador.mandujano@inecol.mx>
 
-## Para adquirir libre PDF del libro  
+## Para adquirir libre el PDF del libro  
 
-- <[salvador.mandujano@inecol.mx](https://www.researchgate.net/publication/348922971_Fototrampeo_en_R_Organizacion_y_Analisis_de_Datos_Volumen_I)>
+- <https://www.researchgate.net/publication/348922971_Fototrampeo_en_R_Organizacion_y_Analisis_de_Datos_Volumen_I>
 
 ## Objetivos del libro
 
