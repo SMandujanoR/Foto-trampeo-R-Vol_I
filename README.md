@@ -50,11 +50,15 @@
 
 <img align="rigth" src="adicionales/IMG-20220611-WA0002.jpg" alt="drawing" width="700"/>
 
-## Para adquirir el libro
+## Para adquirir el libro impreso
 
 Si te interesa el libro en físico contáctanos en:
 
 - <salvador.mandujano@inecol.mx>
+
+## Para adquirir libre PDF del libro  
+
+- <[salvador.mandujano@inecol.mx](https://www.researchgate.net/publication/348922971_Fototrampeo_en_R_Organizacion_y_Analisis_de_Datos_Volumen_I)>
 
 ## Objetivos del libro
 
