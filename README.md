@@ -12,7 +12,7 @@
 
 ### Próximos
 
-- “FototrampeoR”, **PROXIMAMENTE SE ANUNCIARÁN, 1er semestre 2023.
+- “FototrampeoR”, **PROXIMAMENTE SE ANUNCIARÁN**, 1er semestre 2023.
 
 ### Pasados
 
