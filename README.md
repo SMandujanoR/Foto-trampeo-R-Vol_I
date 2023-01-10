@@ -12,9 +12,11 @@
 
 ### Próximos
 
-- “FototrampeoR”, XIV Congreso de Mastozoología de la AMMAC, Chihuahua, 13 al 15 Octubre 2022.
+- “FototrampeoR”, **PROXIMAMENTE SE ANUNCIARÁN, 1er semestre 2023.
 
 ### Pasados
+
+- “FototrampeoR”, XIV Congreso de Mastozoología de la AMMAC, Chihuahua, 13 al 15 Octubre 2022.
 
 - “FototrampeoR: Modelado de Captura-Recaptura Espacialmente Explícita (SECR)”, BUAP, 5-15 Agosto 2022. 
 
